@@ -273,13 +273,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1033585318}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -54.8, y: 12.6, z: -1.8}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: -54.8, y: 286.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
 --- !u!114 &1033585322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -909,6 +909,11 @@ PrefabInstance:
       propertyPath: PlayerID
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1377366891923922326, guid: 054788c838a989d488ca297bbdea4347,
+        type: 3}
+      propertyPath: PlayerID
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4373975838460435829, guid: 054788c838a989d488ca297bbdea4347,
         type: 3}
       propertyPath: PlayerID
@@ -1049,12 +1054,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
+    - target: {fileID: 43742144381366211, guid: 054788c838a989d488ca297bbdea4347,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 43742144381366220, guid: 054788c838a989d488ca297bbdea4347,
         type: 3}
       propertyPath: water
       value: 
       objectReference: {fileID: 4316554280235447016}
     - target: {fileID: 1340397180854392784, guid: 054788c838a989d488ca297bbdea4347,
+        type: 3}
+      propertyPath: PlayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1377366891923922326, guid: 054788c838a989d488ca297bbdea4347,
         type: 3}
       propertyPath: PlayerID
       value: 0
@@ -1230,8 +1245,8 @@ MonoBehaviour:
   underwaterColorStrength: 0
   underwaterRefractionStrength: 0.099
   surfaceFoamTexture: {fileID: 2800000, guid: ab507ff7ff37d954da98b07bf0bb152e, type: 3}
-  surfaceFoamSampling: {x: 0.684, y: 0}
-  surfaceFoamCutoff: 0.684
+  surfaceFoamSampling: {x: 0.774, y: 0}
+  surfaceFoamCutoff: 0.774
   surfaceFoamDistortion: 0
   surfaceFoamBlend: 1
   surfaceFoamColor1: {r: 1, g: 1, b: 1, a: 0.6509804}
