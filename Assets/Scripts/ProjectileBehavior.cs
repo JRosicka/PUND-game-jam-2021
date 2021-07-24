@@ -6,22 +6,47 @@ public class ProjectileBehavior : MonoBehaviour
 {
     // Adjustable Parameters
     public float projectileSpeed;
+    public float secondsUntilGravity;
+
+    private Rigidbody ourRigidbody;
 
     // Start is called before the first frame update
     void Start()
     {
-        Rigidbody ourRigidbody = GetComponent<Rigidbody>();
-        ourRigidbody.velocity = transform.forward * projectileSpeed;
+        ourRigidbody = GetComponent<Rigidbody>();
+        ourRigidbody.velocity = transform.forward * projectileSpeed; // Cannonball spawns traveling forward (relative to ???)
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // The cannonball starts falling after a set amount of time
+        secondsUntilGravity -= Time.deltaTime;
+        if (secondsUntilGravity < 0)
+        {
+            ourRigidbody.constraints = RigidbodyConstraints.None; // Re-enables movement along the Y axis
+        }
+
+        // Despawns cannonball if it sinks beneath the waves
+        if (transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision thisCollision)
     {
-        
+        // Checks whether the collided object was a player
+        GameObject theirGameObject = thisCollision.gameObject;
+        PlayerData theirPlayerData = theirGameObject.GetComponent<PlayerData>();
+        if (theirPlayerData != null) // if it hit a player
+        {
+            // Remove health
+
+            // Remove map pieces (and add to current player)
+        }
+
+        // Despawn cannonball
+        Destroy(gameObject);
     }
 }

@@ -19,6 +19,9 @@ public class DialogController : MonoBehaviour
         // Grab relevant children
         dialog = gameObject.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
 
+        // Begin listening
+        EventManager.dialogEvent.AddListener(DisplayDialog);
+
         // Clear text box
         dialogText = dialog.GetComponent<TextMeshProUGUI>();
         dialogText.text = "";
