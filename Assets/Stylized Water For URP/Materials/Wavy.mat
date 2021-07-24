@@ -23,7 +23,8 @@ Material:
   m_Name: Wavy
   m_Shader: {fileID: -6465566751694194690, guid: b85c5e2c0d0c9774ab24e77078fc44cb,
     type: 3}
-  m_ShaderKeywords: FOAM_SHADOWS_ON INTERSECTION_EFFECTS_ON WATER_LIGHTING_ON WORLD_SPACE_UV_ON
+  m_ShaderKeywords: FOAM_SHADOWS_ON INTERSECTION_EFFECTS_ON SURFACE_FOAM_ON WATER_LIGHTING_ON
+    WORLD_SPACE_UV_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -135,8 +136,8 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
     - _SurfaceFoamBlend: 1
-    - _SurfaceFoamHeightMask: 0.12
-    - _SurfaceFoamHeightMaskSmoothness: 1
+    - _SurfaceFoamHeightMask: 0
+    - _SurfaceFoamHeightMaskSmoothness: 0
     - _SurfaceFoamShadowProjection: 15
     - _UnderwaterRefractionStrength: 0.099
     - _WaterColorDepth: 0.57
@@ -158,7 +159,7 @@ Material:
     - _SurfaceFoamColor1: {r: 1, g: 1, b: 1, a: 0.6509804}
     - _SurfaceFoamColor2: {r: 1, g: 1, b: 1, a: 0}
     - _SurfaceFoamMovement: {r: 0.7, g: 0, b: 0.47, a: 0.01}
-    - _SurfaceFoamSampling: {r: 0.56, g: 0, b: 0, a: 0}
+    - _SurfaceFoamSampling: {r: 0.774, g: 0, b: 0, a: 0}
     - _SurfaceFoamTilingAndOffset: {r: -1, g: -1, b: 0.77, a: 0.22}
     - _WaterColorDeep: {r: 0.01176471, g: 0.28615555, b: 0.50980073, a: 1}
     - _WaterColorHorizon: {r: 0, g: 0.22733206, b: 0.8, a: 1}
