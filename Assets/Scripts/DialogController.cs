@@ -1,0 +1,30 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class DialogController : MonoBehaviour
+{
+    // Adjustable Parameters
+    public float textDelay;
+
+    private TextMeshProUGUI dialogText;
+    private TMP_Text activeText;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void DisplayDialog(DialogLine newLine)
+    {
+
+    }
+}
