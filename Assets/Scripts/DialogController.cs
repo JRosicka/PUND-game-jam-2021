@@ -11,7 +11,7 @@ public class DialogController : MonoBehaviour
     private TextMeshProUGUI dialogText;
     private TMP_Text activeText;
 
-    public GameObject dialog;
+    private GameObject dialog;
 
     // Start is called before the first frame update
     void Start()
