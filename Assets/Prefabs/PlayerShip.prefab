@@ -24,10 +24,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43742143925918927}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.49702892, y: -0.18216991, z: -0.4882395}
+  m_LocalPosition: {x: -0.49702883, y: -0.18216991, z: -0.41}
   m_LocalScale: {x: 0.1, y: 1, z: 0.04}
   m_Children: []
-  m_Father: {fileID: 43742144381366221}
+  m_Father: {fileID: 394190354740487554}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &43742144161892043
@@ -39,8 +39,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 43742144161892042}
+  - component: {fileID: 4373975838460435829}
   m_Layer: 0
-  m_Name: Test
+  m_Name: PlayerShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,10 +58,52 @@ Transform:
   m_LocalPosition: {x: -22.463156, y: 4.8678303, z: -1.0603791}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 43742144381366221}
+  - {fileID: 4993591688143578924}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4373975838460435829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43742144161892043}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b66f4f4467e5db4a8ccab7d933c8dcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerID: -1
+  MaxForwardSpeedInput: 0.001
+  MaxTurnSpeedInput: 0.5
+  MaxForwardSpeed: 0.2
+  MaxTurnSpeed: 0.5
+  MinTurnSpeed: 0.05
+  RotationBySpeed:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.051440507
+      inSlope: 0.154832
+      outSlope: 0.154832
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.33333334
+      outWeight: 0.945269
+    - serializedVersion: 3
+      time: 1
+      value: 1.002448
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 3
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &43742144180867419
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,10 +128,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43742144180867419}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.49702892, y: -0.18216991, z: 0.49176046}
+  m_LocalPosition: {x: -0.49702883, y: -0.18216991, z: 0.32699996}
   m_LocalScale: {x: 0.1, y: 1, z: 0.04}
   m_Children: []
-  m_Father: {fileID: 43742144381366221}
+  m_Father: {fileID: 394190354740487554}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &43742144381366222
@@ -106,7 +149,7 @@ GameObject:
   - component: {fileID: 43742144381366211}
   - component: {fileID: 43742144381366220}
   m_Layer: 0
-  m_Name: PlayerShip
+  m_Name: ShipView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,15 +163,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43742144381366222}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.220289, y: -4.81783, z: -1.794012}
+  m_LocalPosition: {x: 0, y: -4.81783, z: 11.79}
   m_LocalScale: {x: 20, y: 1, z: 50}
   m_Children:
-  - {fileID: 43742144180867418}
-  - {fileID: 43742143925918926}
-  - {fileID: 43742145352680769}
-  - {fileID: 43742145693042755}
   - {fileID: 43742145099310158}
-  m_Father: {fileID: 43742144161892042}
+  - {fileID: 394190354740487554}
+  m_Father: {fileID: 4993591688143578924}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &43742144381366208
@@ -253,10 +293,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43742145352680770}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.47997114, y: -0.18216991, z: 0.49176046}
+  m_LocalPosition: {x: 0.47997114, y: -0.18216991, z: 0.32699996}
   m_LocalScale: {x: 0.1, y: 1, z: 0.04}
   m_Children: []
-  m_Father: {fileID: 43742144381366221}
+  m_Father: {fileID: 394190354740487554}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &43742145693042764
@@ -283,12 +323,120 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43742145693042764}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.47997114, y: -0.18216991, z: -0.4882395}
+  m_LocalPosition: {x: 0.47997114, y: -0.18216991, z: -0.41}
   m_LocalScale: {x: 0.1, y: 1, z: 0.04}
   m_Children: []
-  m_Father: {fileID: 43742144381366221}
+  m_Father: {fileID: 394190354740487554}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1804850243367718837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 394190354740487554}
+  m_Layer: 0
+  m_Name: BoyouncyEffectors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &394190354740487554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804850243367718837}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 43742144180867418}
+  - {fileID: 43742143925918926}
+  - {fileID: 43742145352680769}
+  - {fileID: 43742145693042755}
+  m_Father: {fileID: 43742144381366221}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8174827124755006966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4993591688143578924}
+  - component: {fileID: 1340397180854392784}
+  m_Layer: 0
+  m_Name: ShipMover
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4993591688143578924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8174827124755006966}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 43742144381366221}
+  m_Father: {fileID: 43742144161892042}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1340397180854392784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8174827124755006966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b66f4f4467e5db4a8ccab7d933c8dcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerID: -1
+  MaxForwardSpeedInput: 0.001
+  MaxTurnSpeedInput: 0.5
+  MaxForwardSpeed: 0.2
+  MaxTurnSpeed: 0.5
+  MinTurnSpeed: 0.05
+  RotationBySpeed:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.051440507
+      inSlope: 0.154832
+      outSlope: 0.154832
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.33333334
+      outWeight: 0.945269
+    - serializedVersion: 3
+      time: 1
+      value: 1.002448
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 3
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &43742145099388626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -302,7 +450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 488092, guid: 00527f6e18debd843a66aba9400c8c45, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 488092, guid: 00527f6e18debd843a66aba9400c8c45, type: 3}
       propertyPath: m_LocalScale.x
