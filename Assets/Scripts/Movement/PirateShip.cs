@@ -4,7 +4,7 @@ using Packages.Rider.Editor.UnitTesting;
 using Rewired;
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+public class PirateShip : MonoBehaviour
 {
     private const string HORIZONTAL_MOVEMENT_NAME = "Move Horizontal";
     private const string VERTICAL_MOVEMENT_NAME = "Move Vertical";
@@ -22,6 +22,8 @@ public class PlayerInput : MonoBehaviour
     public float MaxTurnSpeed;
     public float MinTurnSpeed;
     public AnimationCurve RotationBySpeed;
+
+    public Transform PerceivedShipCenter;
 
     // public Rigidbody RigidBody;
 
