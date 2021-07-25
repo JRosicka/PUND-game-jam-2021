@@ -54,6 +54,8 @@ public class IslandManager : MonoBehaviour {
         if (queuedMapFragments.Count > 0) {
             Island chosenIsland = assignableMapFragmentIslands[Random.Range(0, assignableMapFragmentIslands.Count)];
             MapFragmentCollectible fragment = queuedMapFragments[0];
+            fragment.SetFragmentCount(1);
+            
             queuedMapFragments.Remove(fragment);
             chosenIsland.AssignCollectible(fragment);
             spawnedCollectibles.Add(fragment);

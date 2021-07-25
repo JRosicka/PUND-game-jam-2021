@@ -14,35 +14,41 @@ public class PlayerController : MonoBehaviour {
     public MapFragmentCollectible MapFragmentCollectiblePrefab;
     public PirateShip Ship;
 
+    public void Start() {
+        currentHP = StartingHP;
+        currentMapFragmentCount = 0;
+    }
+
     public void ApplyDamage(int damageAmount) {
         currentHP -= damageAmount;
         Debug.Log("Damage applied!");
 
         if (currentHP < 0)
             currentHP = 0;
+        
+        EventManager.damageEvent.Invoke(Ship.PlayerID);
+
         if (currentHP == 0)
             DestroyShip();
-        
-
-        EventManager.damageEvent.Invoke(Ship.PlayerID);
     }
 
     public void Heal(int additionalHealth) {
         currentHP += additionalHealth;
         Debug.Log("Health get!");
 
-        EventManager.healEvent.Invoke(Ship.PlayerID);
+        EventManager.healEvent.Invoke(Ship.PlayerID, currentHP);
     }
 
     public void AddMapFragment() {
         currentMapFragmentCount++;
         Debug.Log("Map fragment get!");
-        EventManager.mapFragmentCollectionEvent.Invoke(Ship.PlayerID);
+        EventManager.mapFragmentCollectionEvent.Invoke(Ship.PlayerID, currentMapFragmentCount);
     }
 
     private void DestroyShip() {
         currentHP = StartingHP;
-        
+        EventManager.healEvent.Invoke(Ship.PlayerID, currentHP);
+
         // Drop all the held map fragments
         if (currentMapFragmentCount > 0) {
             MapFragmentCollectible fragment = Instantiate(MapFragmentCollectiblePrefab, GameManager.Instance.DroppedMapFragmentsBucket);
@@ -52,8 +58,8 @@ public class PlayerController : MonoBehaviour {
         
         Debug.Log("Ship destroyed!");
 
-        // TODO: Does the player lose their upgrades
+        // TODO: Does the player lose their upgrades?
 
-        // TODO: Respawn (move the ship to its new spot)
+        Ship.transform.position = GameManager.Instance.GetNextShipSpawnLocation();
     }
 }
