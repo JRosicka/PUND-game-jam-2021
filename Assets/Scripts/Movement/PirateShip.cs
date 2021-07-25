@@ -61,7 +61,7 @@ public class PirateShip : MonoBehaviour
         secondsSinceLastShot += Time.deltaTime;
 
         if (player.GetButton(SHOOT_NAME) && secondsSinceLastShot >= cannonFireDelay) {
-            TestButton(SHOOT_NAME);
+            // TestButton(SHOOT_NAME);
 
             // Shoot cannonball
             Instantiate(cannonballPrefab, cannonballSpawnPoint.transform.position, cannonballSpawnPoint.transform.rotation);

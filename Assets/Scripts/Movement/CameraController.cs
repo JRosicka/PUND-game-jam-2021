@@ -64,7 +64,7 @@ public class CameraController : MonoBehaviour {
         cameraZ -= Mathf.Abs(maxX - minX) * .15f;
         Camera.transform.position = new Vector3(cameraX, 100, cameraZ);
 
-        Debug.Log("Camera position: " + Camera.transform.position + ", ship 1: " + playerLocations[0] + ", ship 2: " + playerLocations[1] + ", xDistance: " + xDistance + ", zDistance: " + zDistance);
+        // Debug.Log("Camera position: " + Camera.transform.position + ", ship 1: " + playerLocations[0] + ", ship 2: " + playerLocations[1] + ", xDistance: " + xDistance + ", zDistance: " + zDistance);
         
         
         // Camera.main.WorldToViewportPoint()

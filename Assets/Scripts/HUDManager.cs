@@ -41,18 +41,21 @@ public class HUDManager : MonoBehaviour
                 // Transfer all map fragments to attacker
                 int heldFragments = 0;
                 // Find how many map fragments player 1 owns and deactivate them
-                while (maps1[heldFragments].activeSelf == true)
+                foreach (GameObject mapFragment in maps1)
                 {
-                    maps1[heldFragments].SetActive(false);
-                    heldFragments++;
+                    if (mapFragment.activeSelf == true)
+                    {
+                        heldFragments++;
+                        mapFragment.SetActive(false);
+                    }
                 }
 
                 // Activate these map fragments for player 2
-                for (int n = 0; n < 3; n++)
+                foreach (GameObject mapFragment in maps2)
                 {
-                    if (maps2[n].activeSelf == false && heldFragments > 0)
+                    if (mapFragment.activeSelf == false && heldFragments > 0)
                     {
-                        maps2[n].SetActive(true);
+                        mapFragment.SetActive(true);
                         heldFragments--;
                     }
                 }
@@ -76,18 +79,21 @@ public class HUDManager : MonoBehaviour
                 // Transfer all map fragments to attacker
                 int heldFragments = 0;
                 // Find how many map fragments player 2 owns and deactivate them
-                while (maps2[heldFragments].activeSelf == true)
+                foreach (GameObject mapFragment in maps2)
                 {
-                    maps2[heldFragments].SetActive(false);
-                    heldFragments++;
+                    if (mapFragment.activeSelf == true)
+                    {
+                        heldFragments++;
+                        mapFragment.SetActive(false);
+                    }
                 }
 
                 // Activate these map fragments for player 1
-                for (int n = 0; n < 3; n++)
+                foreach (GameObject mapFragment in maps1)
                 {
-                    if (maps1[n].activeSelf == false && heldFragments > 0)
+                    if (mapFragment.activeSelf == false && heldFragments > 0)
                     {
-                        maps1[n].SetActive(true);
+                        mapFragment.SetActive(true);
                         heldFragments--;
                     }
                 }
