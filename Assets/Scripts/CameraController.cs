@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour {
     public Camera Camera;
     public float ExtraSpaceMultiplier;
     public float MinCameraLength = 50;
+    public float CameraHeight = 500;
     
     //TODO: bottom 15% of screen right now is canvas. 4/27ths    16 x 7.666666
 
@@ -62,7 +63,7 @@ public class CameraController : MonoBehaviour {
         // Camera.transform.position = new Vector3(cameraX, cameraY, cameraZ);
         Camera.orthographicSize = Mathf.Max(xDistance / playableAreaScale, zDistance) * ExtraSpaceMultiplier;
         cameraZ -= Mathf.Abs(maxX - minX) * .15f;
-        Camera.transform.position = new Vector3(cameraX, 100, cameraZ);
+        Camera.transform.position = new Vector3(cameraX, CameraHeight, cameraZ);
 
         // Debug.Log("Camera position: " + Camera.transform.position + ", ship 1: " + playerLocations[0] + ", ship 2: " + playerLocations[1] + ", xDistance: " + xDistance + ", zDistance: " + zDistance);
         
