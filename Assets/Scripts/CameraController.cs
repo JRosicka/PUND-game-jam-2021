@@ -10,8 +10,9 @@ public class CameraController : MonoBehaviour {
     public float ExtraSpaceMultiplier;
     public float MinCameraLength = 50;
     public float CameraHeight = 500;
+    public AnimationCurve CameraZAdjustmentByCameraSizeAmount;
     
-    //TODO: bottom 15% of screen right now is canvas. 4/27ths    16 x 7.666666
+    // Bottom 15% of screen right now is canvas. 4/27ths    16 x 7.666666
 
     // Start is called before the first frame update
     void Start()
@@ -62,7 +63,8 @@ public class CameraController : MonoBehaviour {
         // Update camera
         // Camera.transform.position = new Vector3(cameraX, cameraY, cameraZ);
         Camera.orthographicSize = Mathf.Max(xDistance / playableAreaScale, zDistance) * ExtraSpaceMultiplier;
-        cameraZ -= Mathf.Abs(maxX - minX) * .15f;
+        cameraZ -= Mathf.Abs(maxZ - minZ) * CameraZAdjustmentByCameraSizeAmount.Evaluate(Camera.orthographicSize * 1.4f / ExtraSpaceMultiplier);
+        Camera.orthographicSize = Mathf.Max(Camera.orthographicSize, MinCameraLength);
         Camera.transform.position = new Vector3(cameraX, CameraHeight, cameraZ);
 
         // Debug.Log("Camera position: " + Camera.transform.position + ", ship 1: " + playerLocations[0] + ", ship 2: " + playerLocations[1] + ", xDistance: " + xDistance + ", zDistance: " + zDistance);

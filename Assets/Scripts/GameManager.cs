@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour {
 
     public IslandManager IslandManager;
     public Transform DroppedMapFragmentsBucket;
+
+    public List<Transform> ShipSpawnLocations;
+    private int nextShipSpawnIndex;
     
     void Awake() {
         Instance = this;
@@ -32,5 +35,13 @@ public class GameManager : MonoBehaviour {
         }
 
         return closestShipDistance;
+    }
+    
+    public Vector3 GetNextShipSpawnLocation() {
+        Vector3 ret = ShipSpawnLocations[nextShipSpawnIndex].position;
+
+        nextShipSpawnIndex = (nextShipSpawnIndex + 1) % ShipSpawnLocations.Count;
+
+        return ret;
     }
 }
