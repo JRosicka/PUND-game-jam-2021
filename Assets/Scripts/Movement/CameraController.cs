@@ -40,8 +40,8 @@ public class CameraController : MonoBehaviour {
         // maxZ += ExtraSpaceInEachDirection;
 
         // // Check to make sure the camera isn't too small
-        float xDistance = Mathf.Abs(maxX - minX) / .85f;
-        float zDistance = Mathf.Abs(maxZ - minZ);
+        float xDistance = Mathf.Abs(maxX - minX);
+        float zDistance = Mathf.Abs(maxZ - minZ) / .85f;
         // if (xDistance < MinCameraLength) {
         //     float multiplyFactor = MinCameraLength / xDistance;
         //     xDistance *= multiplyFactor;
@@ -54,17 +54,17 @@ public class CameraController : MonoBehaviour {
         // }
 
         // Determine camera position
-        float cameraY = Mathf.Max(xDistance / 2, zDistance * playableAreaScale / 2);
+        // float cameraY = Mathf.Max(xDistance / 2, zDistance * playableAreaScale / 2);
         float cameraX = (minX + maxX) / 2;
         float cameraZ = (minZ + maxZ) / 2;
         
         // Update camera
         // Camera.transform.position = new Vector3(cameraX, cameraY, cameraZ);
         Camera.orthographicSize = Mathf.Max(xDistance, zDistance / playableAreaScale) / 2 * ExtraSpaceMultiplier;
-        cameraX -= Mathf.Abs(maxX - minX) * .15f;
+        cameraZ -= Mathf.Abs(maxX - minX) * .15f;
         Camera.transform.position = new Vector3(cameraX, 100, cameraZ);
 
-        Debug.Log("Camera position: " + Camera.transform.position + ", ship 1: " + playerLocations[0] + ", ship 2: " + playerLocations[1] + ", xDistance: " + xDistance + ", zDistance: " + zDistance);
+        // Debug.Log("Camera position: " + Camera.transform.position + ", ship 1: " + playerLocations[0] + ", ship 2: " + playerLocations[1] + ", xDistance: " + xDistance + ", zDistance: " + zDistance);
         
         
         // Camera.main.WorldToViewportPoint()
