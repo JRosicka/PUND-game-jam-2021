@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Packages.Rider.Editor.UnitTesting;
-using Rewired;
+﻿using Rewired;
 using UnityEngine;
 
 public class PirateShip : MonoBehaviour
@@ -25,12 +22,11 @@ public class PirateShip : MonoBehaviour
     public AnimationCurve RotationBySpeed;
 
     public Transform PerceivedShipCenter;
+    public PlayerController PlayerController;
 
     public GameObject cannonballPrefab;
     public GameObject cannonballSpawnPoint;
-
-    // public Rigidbody RigidBody;
-
+    
     private Player player;
     private float currentSpeed;
     private float currentRotationSpeed;
@@ -50,9 +46,6 @@ public class PirateShip : MonoBehaviour
             Joystick joystick = ReInput.controllers.GetJoystick(PlayerID);
             player.controllers.AddController(joystick, true);
         }
-        
-        // new Vector2(player.GetAxis("Move Horizontal"), player.GetAxis("Move Vertical")).magnitude > 0.15f) {
-
 
         MovePlayer(player.GetAxis(VERTICAL_MOVEMENT_NAME) * MaxForwardSpeedInput);
         float turnInput = player.GetAxis(HORIZONTAL_MOVEMENT_NAME);
@@ -61,8 +54,6 @@ public class PirateShip : MonoBehaviour
         secondsSinceLastShot += Time.deltaTime;
 
         if (player.GetButton(SHOOT_NAME) && secondsSinceLastShot >= cannonFireDelay) {
-            // TestButton(SHOOT_NAME);
-
             // Shoot cannonball
             Instantiate(cannonballPrefab, cannonballSpawnPoint.transform.position, cannonballSpawnPoint.transform.rotation);
             secondsSinceLastShot = 0;
@@ -92,14 +83,11 @@ public class PirateShip : MonoBehaviour
     private void TurnPlayer(float turnInput) {
         // We want the ship to rotate slower when traveling slower
         float speedMultiplyer = RotationBySpeed.Evaluate(Mathf.Abs(currentSpeed / MaxForwardSpeed));
-        // transform.localRotation += Quaternion.Euler(0, turnInput, 0);
-        // transform.Rotate(Vector3.up, turnInput);
         currentRotationSpeed += turnInput;
         currentRotationSpeed = Mathf.Clamp(turnInput, -MaxTurnSpeed, MaxTurnSpeed) * speedMultiplyer;
         if (Mathf.Abs(currentRotationSpeed) > MinTurnSpeed) {
             transform.RotateAround(transform.position, Vector3.up, currentRotationSpeed);
         }
-        // RigidBody.angularVelocity += new Vector3(0, turnInput);
     }
 
     /// <summary>
@@ -110,10 +98,9 @@ public class PirateShip : MonoBehaviour
         currentSpeed += moveInput;
         currentSpeed = Mathf.Clamp(currentSpeed, -MaxForwardSpeed, MaxForwardSpeed);
         t.localPosition += t.rotation * Vector3.forward * currentSpeed;
-        // RigidBody.velocity += new Vector3(0, 0, moveInput);
     }
 
     private void TestButton(string buttonName) {
-        Debug.Log("Test button: " + buttonName);
+        // Debug.Log("Test button: " + buttonName);
     }
 }

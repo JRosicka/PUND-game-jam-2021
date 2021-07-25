@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour {
     private List<PirateShip> Players;
     public static GameManager Instance;
     
+    public Transform DroppedMapFragmentsBucket;
+    
     void Awake() {
         Instance = this;
     }
