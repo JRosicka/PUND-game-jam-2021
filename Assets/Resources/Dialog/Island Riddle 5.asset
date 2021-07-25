@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 854d5f8c05e92154cb1b9e0c608b4cf4, type: 3}
   m_Name: Island Riddle 5
   m_EditorClassIdentifier: 
-  dialogString: Riddle 5
+  dialogString: A fortress awaits you, for the next clue is behind castle walls
   speaker: 0

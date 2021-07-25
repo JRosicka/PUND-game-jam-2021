@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 854d5f8c05e92154cb1b9e0c608b4cf4, type: 3}
   m_Name: Island Riddle 0
   m_EditorClassIdentifier: 
-  dialogString: Riddle 0
+  dialogString: Look for spotted islands, they will hold what you now seek
   speaker: 0

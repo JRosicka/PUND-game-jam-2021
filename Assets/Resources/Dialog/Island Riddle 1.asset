@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 854d5f8c05e92154cb1b9e0c608b4cf4, type: 3}
   m_Name: Island Riddle 1
   m_EditorClassIdentifier: 
-  dialogString: Riddle 1
+  dialogString: Sail to the rocky island where ships go to their death
   speaker: 0
