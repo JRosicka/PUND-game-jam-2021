@@ -8523,7 +8523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cff1cd8ab2aa84a994f36ec695f576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textDelay: 0.1
+  textDelay: 0.05
   dialogText: {fileID: 1298843696}
 --- !u!1001 &940558364
 PrefabInstance:
@@ -12033,8 +12033,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -19905,7 +19905,7 @@ Transform:
   m_GameObject: {fileID: 2039093638317761939}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 834.855, y: 400, z: 400}
+  m_LocalScale: {x: 2000, y: 400, z: 1500}
   m_Children: []
   m_Father: {fileID: 368198585}
   m_RootOrder: 0
