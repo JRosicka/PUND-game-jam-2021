@@ -88,8 +88,8 @@ namespace StylizedWater
         public Vector4 surfaceFoamTilingAndOffset;
         [Range(0f, 1f)] public float surfaceFoamOffsetX;
         [Range(0f, 1f)] public float surfaceFoamOffsetY;
-        [Range(0f, 2f)] public float surfaceFoamScale1;
-        [Range(0f, 2f)] public float surfaceFoamScale2;
+        [Range(0f, 1000f)] public float surfaceFoamScale1;
+        [Range(0f, 1000f)] public float surfaceFoamScale2;
         public bool enableSurfaceFoam;
         [Range(0f, 1f)] public float surfaceFoamHeightMask;
         [Range(0f, 1f)] public float surfaceFoamHeightMaskSmoothness;
