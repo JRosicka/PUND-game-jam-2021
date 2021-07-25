@@ -208,7 +208,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   PerceivedShipCenter: {fileID: 2321231919797189384}
-  cannonballPrefab: {fileID: 0}
+  cannonballPrefab: {fileID: 2563903172223447666, guid: e2a27b6bcbc8ce0419f38e0af12b85d0,
+    type: 3}
   cannonballSpawnPoint: {fileID: 2341794813844782495}
 --- !u!33 &6837303659162276618
 MeshFilter:
