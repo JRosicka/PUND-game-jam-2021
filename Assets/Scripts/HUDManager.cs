@@ -7,6 +7,9 @@ public class HUDManager : MonoBehaviour
     public List<GameObject> health1;
     public List<GameObject> health2;
 
+    public List<GameObject> maps1;
+    public List<GameObject> maps2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,8 +36,27 @@ public class HUDManager : MonoBehaviour
                 }
             }
 
-            if (health1[0].activeSelf == false)
+            if (health1[0].activeSelf == false) // the ship is out of HP!
             {
+                // Transfer all map fragments to attacker
+                int heldFragments = 0;
+                // Find how many map fragments player 1 owns and deactivate them
+                while (maps1[heldFragments].activeSelf == true)
+                {
+                    maps1[heldFragments].SetActive(false);
+                    heldFragments++;
+                }
+
+                // Activate these map fragments for player 2
+                for (int n = 0; n < 3; n++)
+                {
+                    if (maps2[n].activeSelf == false && heldFragments > 0)
+                    {
+                        maps2[n].SetActive(true);
+                        heldFragments--;
+                    }
+                }
+
                 // Kill ship somehow
             }
         } else // Player 2 takes damage
@@ -49,8 +71,27 @@ public class HUDManager : MonoBehaviour
                 }
             }
 
-            if (health2[0].activeSelf == false)
+            if (health2[0].activeSelf == false) // the ship is out of HP!
             {
+                // Transfer all map fragments to attacker
+                int heldFragments = 0;
+                // Find how many map fragments player 2 owns and deactivate them
+                while (maps2[heldFragments].activeSelf == true)
+                {
+                    maps2[heldFragments].SetActive(false);
+                    heldFragments++;
+                }
+
+                // Activate these map fragments for player 1
+                for (int n = 0; n < 3; n++)
+                {
+                    if (maps1[n].activeSelf == false && heldFragments > 0)
+                    {
+                        maps1[n].SetActive(true);
+                        heldFragments--;
+                    }
+                }
+
                 // Kill ship somehow
             }
         }
