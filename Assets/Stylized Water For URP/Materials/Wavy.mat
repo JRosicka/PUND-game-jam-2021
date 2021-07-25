@@ -75,7 +75,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SurfaceFoamTexture:
-        m_Texture: {fileID: 2800000, guid: ab507ff7ff37d954da98b07bf0bb152e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5293ac8cd3dd6f6478585f4f30abddf7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WaterColorGradientTexture:
@@ -158,9 +158,9 @@ Material:
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SurfaceFoamColor1: {r: 1, g: 1, b: 1, a: 0.6509804}
     - _SurfaceFoamColor2: {r: 1, g: 1, b: 1, a: 0}
-    - _SurfaceFoamMovement: {r: 0.7, g: 0, b: 0.47, a: 0.01}
-    - _SurfaceFoamSampling: {r: 0.643, g: 0, b: 0, a: 0}
-    - _SurfaceFoamTilingAndOffset: {r: -1, g: -1, b: 0.77, a: 0.14}
+    - _SurfaceFoamMovement: {r: 0.7, g: 0.19, b: 0.47, a: 0.01}
+    - _SurfaceFoamSampling: {r: 0.643, g: 1.13, b: 0, a: 0}
+    - _SurfaceFoamTilingAndOffset: {r: -1, g: -1, b: 2, a: 0.14}
     - _WaterColorDeep: {r: 0.01176471, g: 0.28615555, b: 0.50980073, a: 1}
     - _WaterColorHorizon: {r: 0, g: 0.22733206, b: 0.8, a: 1}
     - _WaterColorShallow: {r: 0, g: 0.7725491, b: 0.62352943, a: 0.5019608}
