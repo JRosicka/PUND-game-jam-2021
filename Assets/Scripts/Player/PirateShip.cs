@@ -24,10 +24,10 @@ public class PirateShip : MonoBehaviour
     public Transform PerceivedShipCenter;
     public PlayerController PlayerController;
 
-    public GameObject cannonballPrefab;
+    public ProjectileBehavior cannonballPrefab;
     public GameObject cannonballSpawnPoint;
     
-    private Player player;
+    private Player PlayerInput;
     private float currentSpeed;
     private float currentRotationSpeed;
     private float secondsSinceLastShot;
@@ -35,47 +35,49 @@ public class PirateShip : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = ReInput.players.GetPlayer(PlayerID);
+        PlayerInput = ReInput.players.GetPlayer(PlayerID);
         secondsSinceLastShot = cannonFireDelay;
     }
 
     // Update is called once per frame
     void FixedUpdate() {
 
-        if (player.controllers.joystickCount == 0) {
+        if (PlayerInput.controllers.joystickCount == 0) {
             Joystick joystick = ReInput.controllers.GetJoystick(PlayerID);
-            player.controllers.AddController(joystick, true);
+            PlayerInput.controllers.AddController(joystick, true);
         }
 
-        MovePlayer(player.GetAxis(VERTICAL_MOVEMENT_NAME) * MaxForwardSpeedInput);
-        float turnInput = player.GetAxis(HORIZONTAL_MOVEMENT_NAME);
+        MovePlayer(PlayerInput.GetAxis(VERTICAL_MOVEMENT_NAME) * MaxForwardSpeedInput);
+        float turnInput = PlayerInput.GetAxis(HORIZONTAL_MOVEMENT_NAME);
         TurnPlayer(turnInput * MaxTurnSpeedInput);
 
         secondsSinceLastShot += Time.deltaTime;
 
-        if (player.GetButton(SHOOT_NAME) && secondsSinceLastShot >= cannonFireDelay) {
+        if (PlayerInput.GetButton(SHOOT_NAME) && secondsSinceLastShot >= cannonFireDelay) {
             // Shoot cannonball
-            Instantiate(cannonballPrefab, cannonballSpawnPoint.transform.position, cannonballSpawnPoint.transform.rotation);
+            ProjectileBehavior cannonBall = Instantiate(cannonballPrefab, cannonballSpawnPoint.transform.position, cannonballSpawnPoint.transform.rotation);
+            cannonBall.FiringPlayer = PlayerController;
+            
             secondsSinceLastShot = 0;
         }
         
-        if (player.GetButton(INTERACT_NAME)) {
+        if (PlayerInput.GetButton(INTERACT_NAME)) {
             TestButton(INTERACT_NAME);
         }
         
-        if (player.GetButton(HANDBRAKE_NAME)) {
+        if (PlayerInput.GetButton(HANDBRAKE_NAME)) {
             TestButton(HANDBRAKE_NAME);
         }
         
-        if (player.GetButton(PAUSE_NAME)) {
+        if (PlayerInput.GetButton(PAUSE_NAME)) {
             TestButton(PAUSE_NAME);
         }
         
-        if (player.GetButton(RESTART_NAME)) {
+        if (PlayerInput.GetButton(RESTART_NAME)) {
             TestButton(RESTART_NAME);
         }
         
-        if (player.GetButton(ABILITY_NAME)) {
+        if (PlayerInput.GetButton(ABILITY_NAME)) {
             TestButton(ABILITY_NAME);
         }
     }

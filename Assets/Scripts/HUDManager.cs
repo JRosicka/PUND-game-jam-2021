@@ -14,6 +14,8 @@ public class HUDManager : MonoBehaviour
     void Start()
     {
         EventManager.damageEvent.AddListener(ApplyDamage);
+        EventManager.healEvent.AddListener(ApplyHealth);
+        EventManager.mapFragmentCollectionEvent.AddListener(ApplyMapFragment);
     }
 
     // Update is called once per frame
@@ -38,7 +40,6 @@ public class HUDManager : MonoBehaviour
 
             if (health1[0].activeSelf == false) // the ship is out of HP!
             {
-                // Transfer all map fragments to attacker
                 int heldFragments = 0;
                 // Find how many map fragments player 1 owns and deactivate them
                 foreach (GameObject mapFragment in maps1)
@@ -50,15 +51,15 @@ public class HUDManager : MonoBehaviour
                     }
                 }
 
-                // Activate these map fragments for player 2
-                foreach (GameObject mapFragment in maps2)
-                {
-                    if (mapFragment.activeSelf == false && heldFragments > 0)
-                    {
-                        mapFragment.SetActive(true);
-                        heldFragments--;
-                    }
-                }
+                // // Activate these map fragments for player 2
+                // foreach (GameObject mapFragment in maps2)
+                // {
+                //     if (mapFragment.activeSelf == false && heldFragments > 0)
+                //     {
+                //         mapFragment.SetActive(true);
+                //         heldFragments--;
+                //     }
+                // }
 
                 // Kill ship somehow
             }
@@ -76,7 +77,6 @@ public class HUDManager : MonoBehaviour
 
             if (health2[0].activeSelf == false) // the ship is out of HP!
             {
-                // Transfer all map fragments to attacker
                 int heldFragments = 0;
                 // Find how many map fragments player 2 owns and deactivate them
                 foreach (GameObject mapFragment in maps2)
@@ -88,18 +88,26 @@ public class HUDManager : MonoBehaviour
                     }
                 }
 
-                // Activate these map fragments for player 1
-                foreach (GameObject mapFragment in maps1)
-                {
-                    if (mapFragment.activeSelf == false && heldFragments > 0)
-                    {
-                        mapFragment.SetActive(true);
-                        heldFragments--;
-                    }
-                }
+                // // Activate these map fragments for player 1
+                // foreach (GameObject mapFragment in maps1)
+                // {
+                //     if (mapFragment.activeSelf == false && heldFragments > 0)
+                //     {
+                //         mapFragment.SetActive(true);
+                //         heldFragments--;
+                //     }
+                // }
 
                 // Kill ship somehow
             }
         }
+    }
+
+    public void ApplyHealth(int playerID) {
+        // TODO
+    }
+    
+    public void ApplyMapFragment(int playerID) {
+        // TODO
     }
 }

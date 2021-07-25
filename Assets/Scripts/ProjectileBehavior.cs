@@ -7,6 +7,7 @@ public class ProjectileBehavior : MonoBehaviour
     // Adjustable Parameters
     public float projectileSpeed;
     public float secondsUntilGravity;
+    public PlayerController FiringPlayer;
 
     private Rigidbody ourRigidbody;
 
@@ -41,8 +42,13 @@ public class ProjectileBehavior : MonoBehaviour
         PirateShip theirPlayerData = theirGameObject.GetComponent<PirateShip>();
         if (theirPlayerData != null) // if it hit a player
         {
+            // Ignore the collision if the player hit themselves - could happen right after firing
+            if (theirPlayerData == FiringPlayer.Ship) {
+                return;
+            }
+            
             // Remove health
-            EventManager.damageEvent.Invoke(theirPlayerData.PlayerID);
+            theirPlayerData.PlayerController.ApplyDamage(1);
         }
 
         // Despawn cannonball

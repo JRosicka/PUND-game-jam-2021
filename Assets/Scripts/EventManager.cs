@@ -10,4 +10,6 @@ public class EventManager : MonoBehaviour
 
     public static DialogEvent dialogEvent = new DialogEvent();
     public static IntEvent damageEvent = new IntEvent();
+    public static IntEvent healEvent = new IntEvent();
+    public static IntEvent mapFragmentCollectionEvent = new IntEvent();
 }

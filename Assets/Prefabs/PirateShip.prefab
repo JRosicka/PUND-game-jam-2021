@@ -64,6 +64,53 @@ Transform:
   m_Father: {fileID: 6837303659162276615}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6185452992670468125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 222497618300861628}
+  - component: {fileID: 1361515957229329858}
+  m_Layer: 0
+  m_Name: Player Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &222497618300861628
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6185452992670468125}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6837303659162276615}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1361515957229329858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6185452992670468125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f3ea5292c4a9d442b85f2b44ccc7185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingHP: 3
+  MapFragmentCollectiblePrefab: {fileID: 8419425156129981717, guid: 25885eedb6d912342b70842ea0970dda,
+    type: 3}
+  Ship: {fileID: 5576863368071504220}
 --- !u!1 &6837303658325439622
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +208,7 @@ Transform:
   - {fileID: 6557784518797367624}
   - {fileID: 2321231919797189384}
   - {fileID: 7247421535061930322}
+  - {fileID: 222497618300861628}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -208,7 +256,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   PerceivedShipCenter: {fileID: 2321231919797189384}
-  cannonballPrefab: {fileID: 2563903172223447666, guid: e2a27b6bcbc8ce0419f38e0af12b85d0,
+  PlayerController: {fileID: 1361515957229329858}
+  cannonballPrefab: {fileID: 2563903172223447672, guid: e2a27b6bcbc8ce0419f38e0af12b85d0,
     type: 3}
   cannonballSpawnPoint: {fileID: 2341794813844782495}
 --- !u!33 &6837303659162276618
@@ -269,8 +318,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 15, y: 30, z: 40}
+  m_Center: {x: 0, y: 13, z: 3.19}
 --- !u!54 &6837303659162276617
 Rigidbody:
   m_ObjectHideFlags: 0
