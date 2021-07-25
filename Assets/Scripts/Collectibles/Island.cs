@@ -8,6 +8,7 @@ public class Island : MonoBehaviour {
     public Collectible CurrentCollectible;
     public SpriteRenderer CollectibleIcon;
     public float MinShipDistanceForCollectibleToAppear;
+    public DialogLine Riddle;
 
     private bool hasHadMapFragmentBefore = false;
 
@@ -41,7 +42,7 @@ public class Island : MonoBehaviour {
         if (ship == null) return;
 
         PlayerController player = ship.PlayerController;
-        GameManager.Instance.IslandManager.OnCollectiblePickedUp(player, CurrentCollectible);
+        GameManager.Instance.IslandManager.OnCollectiblePickedUp(player, CurrentCollectible, this);
 
         CollectibleIcon.sprite = null;
         Destroy(CurrentCollectible);

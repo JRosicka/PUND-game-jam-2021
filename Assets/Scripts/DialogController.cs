@@ -8,35 +8,22 @@ public class DialogController : MonoBehaviour
     // Adjustable Parameters
     public float textDelay;
 
-    private TextMeshProUGUI dialogText;
+    public TextMeshProUGUI dialogText;
     private TMP_Text activeText;
-
-    private GameObject dialog;
-
+    
     // Start is called before the first frame update
     void Start()
     {
-        // Grab relevant children
-        dialog = gameObject.transform.GetChild(0).GetChild(0).GetChild(0).gameObject;
-
         // Begin listening
         EventManager.dialogEvent.AddListener(DisplayDialog);
-
-        // Clear text box
-        dialogText = dialog.GetComponent<TextMeshProUGUI>();
+        
         dialogText.text = "";
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public void DisplayDialog(DialogLine activeLine)
     {
         dialogText.text = activeLine.dialogString;
-        activeText = dialog.GetComponent<TMP_Text>();
+        activeText = dialogText.textInfo.textComponent;
         StartCoroutine(RevealByCharacter(activeText));
     }
 

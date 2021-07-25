@@ -2,7 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogLine : ScriptableObject
-{
+[CreateAssetMenu(fileName = "DialogLine", menuName = "Resources/Dialog")]
+public class DialogLine : ScriptableObject {
+    public enum Character {
+        Poseidon,
+    }
+    
     public string dialogString;
+    public Character speaker;
 }

@@ -25,7 +25,7 @@ public class IslandManager : MonoBehaviour {
         StartCoroutine(AssignCollectibles());
     }
 
-    public void OnCollectiblePickedUp(PlayerController player, Collectible collectible) {
+    public void OnCollectiblePickedUp(PlayerController player, Collectible collectible, Island island) {
         collectible.ApplyCollectible(player);
 
         if (collectible is MapFragmentCollectible) {
@@ -57,6 +57,8 @@ public class IslandManager : MonoBehaviour {
             queuedMapFragments.Remove(fragment);
             chosenIsland.AssignCollectible(fragment);
             spawnedCollectibles.Add(fragment);
+            
+            EventManager.dialogEvent.Invoke(chosenIsland.Riddle);
 
             if (assignableIslands.Contains(chosenIsland)) {
                 assignableIslands.Remove(chosenIsland);
