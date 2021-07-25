@@ -38,10 +38,11 @@ public class ProjectileBehavior : MonoBehaviour
     {
         // Checks whether the collided object was a player
         GameObject theirGameObject = thisCollision.gameObject;
-        PlayerData theirPlayerData = theirGameObject.GetComponent<PlayerData>();
+        PirateShip theirPlayerData = theirGameObject.GetComponent<PirateShip>();
         if (theirPlayerData != null) // if it hit a player
         {
             // Remove health
+            EventManager.damageEvent.Invoke(theirPlayerData.PlayerID);
 
             // Remove map pieces (and add to current player)
         }

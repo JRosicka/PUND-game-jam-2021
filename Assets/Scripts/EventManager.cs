@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class EventManager : MonoBehaviour
 {
     public class DialogEvent : UnityEvent<DialogLine> { }
+    public class IntEvent : UnityEvent<int> { }
 
     public static DialogEvent dialogEvent = new DialogEvent();
+    public static IntEvent damageEvent = new IntEvent();
 }
