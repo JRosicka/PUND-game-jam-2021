@@ -21,20 +21,26 @@ public class PirateShip : MonoBehaviour
     public float MaxForwardSpeed;
     public float MaxTurnSpeed;
     public float MinTurnSpeed;
+    public float cannonFireDelay;
     public AnimationCurve RotationBySpeed;
 
     public Transform PerceivedShipCenter;
+
+    public GameObject cannonballPrefab;
+    public GameObject cannonballSpawnPoint;
 
     // public Rigidbody RigidBody;
 
     private Player player;
     private float currentSpeed;
     private float currentRotationSpeed;
+    private float secondsSinceLastShot;
 
     // Start is called before the first frame update
     void Start()
     {
         player = ReInput.players.GetPlayer(PlayerID);
+        secondsSinceLastShot = cannonFireDelay;
     }
 
     // Update is called once per frame
@@ -52,8 +58,14 @@ public class PirateShip : MonoBehaviour
         float turnInput = player.GetAxis(HORIZONTAL_MOVEMENT_NAME);
         TurnPlayer(turnInput * MaxTurnSpeedInput);
 
-        if (player.GetButton(SHOOT_NAME)) {
+        secondsSinceLastShot += Time.deltaTime;
+
+        if (player.GetButton(SHOOT_NAME) && secondsSinceLastShot >= cannonFireDelay) {
             TestButton(SHOOT_NAME);
+
+            // Shoot cannonball
+            Instantiate(cannonballPrefab, cannonballSpawnPoint.transform.position, cannonballSpawnPoint.transform.rotation);
+            secondsSinceLastShot = 0;
         }
         
         if (player.GetButton(INTERACT_NAME)) {

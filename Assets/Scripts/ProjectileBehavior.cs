@@ -28,7 +28,7 @@ public class ProjectileBehavior : MonoBehaviour
         }
 
         // Despawns cannonball if it sinks beneath the waves
-        if (transform.position.y < -10)
+        if (transform.position.y < -50)
         {
             Destroy(gameObject);
         }
@@ -43,8 +43,6 @@ public class ProjectileBehavior : MonoBehaviour
         {
             // Remove health
             EventManager.damageEvent.Invoke(theirPlayerData.PlayerID);
-
-            // Remove map pieces (and add to current player)
         }
 
         // Despawn cannonball
