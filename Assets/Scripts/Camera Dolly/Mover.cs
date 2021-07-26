@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
+using UnityEngine.SceneManagement;
 
 public class Mover : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class Mover : MonoBehaviour
             return;
         }
 
-        if (PlayerInput.GetButton(SHOOT_NAME))
+        if (PlayerInput.GetButton(SHOOT_NAME) || Input.GetKeyDown(KeyCode.Space))
         {
             startDolly = true;
         }
@@ -46,6 +47,12 @@ public class Mover : MonoBehaviour
         {
             Play();
         }
+        if(currentSeg == 14)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
+        Debug.Log(currentSeg);
     }
 
     private void Play()
@@ -62,7 +69,7 @@ public class Mover : MonoBehaviour
             currentSeg--;
         }
 
-        transform.position = rail.LinearPosition(currentSeg, transition);
+        transform.position = rail.CatmullPosition(currentSeg, transition);
         transform.rotation = rail.Orientation(currentSeg, transition);
 
     }
