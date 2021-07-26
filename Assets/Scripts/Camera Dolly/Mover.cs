@@ -11,11 +11,15 @@ public class Mover : MonoBehaviour
     public Rail rail;
     public GameObject hudManager;
     public int PlayerID;
+
+    public IntroAudioScript AudioScript;
+    
     private Player PlayerInput;
 
     private int currentSeg;
     private float transition;
     private bool startDolly;
+    private bool hasStartedAudio;
 
     private void Start()
     {
@@ -47,6 +51,10 @@ public class Mover : MonoBehaviour
         {
             hudManager.SetActive(false);
             Play();
+            if (!hasStartedAudio) {
+                StartCoroutine(AudioScript.RunAudioScript());
+                hasStartedAudio = true;
+            }
         }
 
 

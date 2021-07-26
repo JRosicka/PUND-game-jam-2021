@@ -6,11 +6,12 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour {
     public GameObject AudioBucket;
     
-    private static AudioManager Instance;
+    public static AudioManager Instance;
     private AudioSource currentlyPlayingSong;
 
     private List<AudioSource> playingInstances = new List<AudioSource>();
     private List<AudioSource> fadingOutInstances;
+    private List<AudioSource> pausedAudio = new List<AudioSource>();
 
     public void Start() {
         Instance = this;
@@ -18,17 +19,31 @@ public class AudioManager : MonoBehaviour {
         EventManager.dialogEvent.AddListener(PlayDialogLine);
     }
 
-    public void PlaySong(AudioSource source) {
+    public AudioSource PlaySong(AudioSource source) {
         if (currentlyPlayingSong != null) {
             currentlyPlayingSong.Stop();
         }
 
         currentlyPlayingSong = source;
-        PlayAudioSource(source, true);
+        return PlayAudioSource(source, true);
     }
 
-    public void PlaySoundEffect(AudioSource source) {
-        PlayAudioSource(source, false);
+    public AudioSource PlaySoundEffect(AudioSource source) {
+        return PlayAudioSource(source, false);
+    }
+
+    public void PauseAudio(AudioSource source) {
+        if (!playingInstances.Contains(source)) return;
+        
+        source.Pause();
+        pausedAudio.Add(source);
+    }
+
+    public void ResumeAudio(AudioSource source) {
+        if (!playingInstances.Contains(source)) return;
+        
+        source.UnPause();
+        pausedAudio.Remove(source);
     }
 
     private float currentSecondsOfFadeoutLeft;
@@ -75,7 +90,7 @@ public class AudioManager : MonoBehaviour {
         }
     }
     
-    private void PlayAudioSource(AudioSource source, bool loop) {
+    private AudioSource PlayAudioSource(AudioSource source, bool loop) {
         AudioSource audioInstance = Instantiate(source, AudioBucket.transform);
         playingInstances.Add(audioInstance);
         
@@ -83,16 +98,18 @@ public class AudioManager : MonoBehaviour {
         source.time = 0f;
 
         if (loop) {
-            source.Play();
+            audioInstance.Play();
         } else {
             StartCoroutine(PlayAndDestroyAudio(audioInstance));
         }
+
+        return audioInstance;
     }
 
     private IEnumerator PlayAndDestroyAudio(AudioSource source) {
         source.Play();
         do yield return null;
-        while (source != null && source.isPlaying);
+        while (source != null && (source.isPlaying || pausedAudio.Contains(source)));
 
         if (source != null) {
             Destroy(source.gameObject);
