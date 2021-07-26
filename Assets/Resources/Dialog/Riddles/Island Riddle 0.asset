@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 854d5f8c05e92154cb1b9e0c608b4cf4, type: 3}
-  m_Name: Island Riddle 3
+  m_Name: Island Riddle 0
   m_EditorClassIdentifier: 
-  dialogString: Head to the main land, these islands with tall wooden bungalows are
-    key
-  speaker: 0
+  DialogString: Look for spotted islands, they will hold what you now seek
+  SpeakerIcon: {fileID: 21300000, guid: c3066a8b707e97c4d9811056cc6fb9dc, type: 3}
+  Audio: {fileID: 4037429943746402915, guid: 545b1c403142a7048a6cca54e13ce50f, type: 3}

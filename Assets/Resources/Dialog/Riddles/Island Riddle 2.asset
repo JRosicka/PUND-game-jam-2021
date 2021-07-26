@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 854d5f8c05e92154cb1b9e0c608b4cf4, type: 3}
-  m_Name: Island Riddle 4
+  m_Name: Island Riddle 2
   m_EditorClassIdentifier: 
-  dialogString: Grab the map piece from Main Town in the middle of the sea chart
-  speaker: 0
+  DialogString: Go to the plantation where the townhouse stands tall in the green
+    fields
+  SpeakerIcon: {fileID: 21300000, guid: c3066a8b707e97c4d9811056cc6fb9dc, type: 3}
+  Audio: {fileID: 5660790859723348947, guid: 3c59e61699949904fbafcb6c8eeae523, type: 3}
