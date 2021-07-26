@@ -8,6 +8,7 @@ public class Mover : MonoBehaviour
 {
     private const string SHOOT_NAME = "Shoot";
 
+    [Range(0f, 10f)] public float cameraMoveSpeed = 5f;
     public Rail rail;
     public GameObject hudManager;
     public int PlayerID;
@@ -63,12 +64,13 @@ public class Mover : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
-        Debug.Log(currentSeg);
+        //Debug.Log(currentSeg);
+;
     }
 
     private void Play()
     {
-        transition += Time.deltaTime * 1 / 2.5f;
+        transition += Time.deltaTime * 1 / cameraMoveSpeed;
         if(transition >1)
         {
             transition = 0;

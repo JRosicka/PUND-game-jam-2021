@@ -7,6 +7,8 @@ public class IntroAudioScript : MonoBehaviour {
     public AudioSource SoundTrackPrefab;
     public AudioSource DialogPrefab;
 
+    public Mover cameraControl;
+
     private AudioSource DialogInstance;
     
     private void Start() {
@@ -15,21 +17,34 @@ public class IntroAudioScript : MonoBehaviour {
 
     
     public IEnumerator RunAudioScript() {
-        yield return new WaitForSeconds(2);
+
+        float fastCam = 1.5f;
+        float slowCam = 5f;
         
         DialogInstance = AudioManager.PlaySoundEffect(DialogPrefab);
         
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(11f);
         
         AudioManager.PauseAudio(DialogInstance);
+        cameraControl.cameraMoveSpeed = fastCam;
         
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2.3f);
+
+        cameraControl.cameraMoveSpeed = slowCam;
         
         AudioManager.ResumeAudio(DialogInstance);
         
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(18.5f);
+
+        AudioManager.PauseAudio(DialogInstance);
+        cameraControl.cameraMoveSpeed = fastCam;
+
+        yield return new WaitForSeconds(3f);
+        cameraControl.cameraMoveSpeed = slowCam;
         
-        AudioManager.FadeOutAllAudio();
+        AudioManager.ResumeAudio(DialogInstance);
+
+        //AudioManager.FadeOutAllAudio();
 
         yield return null;
     }
