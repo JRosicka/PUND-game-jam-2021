@@ -70,11 +70,13 @@ public class IslandManager : MonoBehaviour {
                 assignableIslands.Remove(chosenIsland);
             }
         } else {
-            // Pick the treasure location!
+            // Pick the victory location!
             VictoryCollectible victoryCollectible = Instantiate(VictoryPrefab, CollectibleBucket.transform);
             Island chosenIsland = assignableMapFragmentIslands[Random.Range(0, assignableMapFragmentIslands.Count)];
             chosenIsland.AssignCollectible(victoryCollectible);
             spawnedCollectibles.Add(victoryCollectible);
+            
+            EventManager.dialogEvent.Invoke(chosenIsland.Riddle);
 
             if (assignableIslands.Contains(chosenIsland)) {
                 assignableIslands.Remove(chosenIsland);
