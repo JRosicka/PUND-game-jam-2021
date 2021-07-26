@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     [SerializeField]
@@ -17,6 +18,8 @@ public class GameManager : MonoBehaviour {
 
     public List<Transform> ShipSpawnLocations;
     private int nextShipSpawnIndex;
+
+    public Transform cameraPos;
     
     void Awake() {
         Instance = this;
@@ -63,5 +66,20 @@ public class GameManager : MonoBehaviour {
 
     public void EndGameWithWinner(PlayerController winner) {
         Debug.Log("THE WINNER IS PLAYER " + winner.Ship.PlayerID);
+
+        PlayerPrefs.SetFloat("cameraPosX", cameraPos.position.x);
+        PlayerPrefs.SetFloat("cameraPosY", cameraPos.position.y);
+        PlayerPrefs.SetFloat("cameraPosZ", cameraPos.position.z);
+
+        PlayerPrefs.SetFloat("CameraRotY", cameraPos.rotation.y);
+
+        PlayerPrefs.Save();
+
+
+        Debug.Log("Position " + cameraPos.transform.position +  "Stored Values " + PlayerPrefs.GetFloat("cameraPosX")
+        +" " + PlayerPrefs.GetFloat("cameraPosY")+ " " + PlayerPrefs.GetFloat("cameraPosZ"));
+    
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

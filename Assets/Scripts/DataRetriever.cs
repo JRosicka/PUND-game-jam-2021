@@ -6,9 +6,9 @@ public class DataRetriever : MonoBehaviour
 {
     public Transform node;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        node.position = new Vector3(PlayerPrefs.GetInt("cameraPosX"), PlayerPrefs.GetInt("cameraPosY"), PlayerPrefs.GetInt("cameraPosZ"));
-        node.rotation = new Quaternion(PlayerPrefs.GetInt("cameraRotX"), PlayerPrefs.GetInt("cameraRotY"),PlayerPrefs.GetInt("RotZ"),PlayerPrefs.GetInt("RotW"));
+        node.transform.position = new Vector3(PlayerPrefs.GetFloat("cameraPosX"), PlayerPrefs.GetFloat("cameraPosY"), PlayerPrefs.GetFloat("cameraPosZ"));
+        node.transform.rotation = new Quaternion (180, PlayerPrefs.GetFloat("cameraRotY"), 0, 0);
     }
 }
