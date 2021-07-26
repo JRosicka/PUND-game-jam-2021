@@ -14,13 +14,14 @@ public class IslandManager : MonoBehaviour {
     public MapFragmentCollectible MapFragmentPrefab;
     public NullCollectible NullCollectiblePrefab;
     public List<UpgradeCollectible> UpgradePrefabs;
+    public GameObject CollectibleBucket;
 
     private List<MapFragmentCollectible> queuedMapFragments = new List<MapFragmentCollectible>();
     private List<Collectible> spawnedCollectibles = new List<Collectible>();
 
     public void Initialize() {
         for (int i = 0; i < totalMapFragmentCount; i++) {
-            queuedMapFragments.Add(Instantiate(MapFragmentPrefab));
+            queuedMapFragments.Add(Instantiate(MapFragmentPrefab, CollectibleBucket.transform));
         }
         StartCoroutine(AssignCollectibles());
     }
@@ -69,14 +70,14 @@ public class IslandManager : MonoBehaviour {
 
         // Upgrades
         foreach (Island island in assignableIslands) {
-            UpgradeCollectible upgradeCollectible = Instantiate(UpgradePrefabs[Random.Range(0, UpgradePrefabs.Count)]);
+            UpgradeCollectible upgradeCollectible = Instantiate(UpgradePrefabs[Random.Range(0, UpgradePrefabs.Count)], CollectibleBucket.transform);
             island.AssignCollectible(upgradeCollectible);
             spawnedCollectibles.Add(upgradeCollectible);
         }
 
         // Nulls
         foreach (Island island in unAssignableIslands) {
-            NullCollectible nullCollectible = Instantiate(NullCollectiblePrefab);
+            NullCollectible nullCollectible = Instantiate(NullCollectiblePrefab, CollectibleBucket.transform);
             island.AssignCollectible(nullCollectible);
             spawnedCollectibles.Add(nullCollectible);
         }

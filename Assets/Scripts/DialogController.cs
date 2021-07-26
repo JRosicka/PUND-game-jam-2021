@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class DialogController : MonoBehaviour
 {
     // Adjustable Parameters
     public float textDelay;
 
+    public Image SpeakerImage;
+    public Image DialogBox;
     public TextMeshProUGUI dialogText;
     private TMP_Text activeText;
     
@@ -22,9 +25,14 @@ public class DialogController : MonoBehaviour
     
     public void DisplayDialog(DialogLine activeLine)
     {
-        dialogText.text = activeLine.dialogString;
+        DialogBox.gameObject.SetActive(true);
+        
+        dialogText.text = activeLine.DialogString;
         activeText = dialogText.textInfo.textComponent;
         StartCoroutine(RevealByCharacter(activeText));
+
+        SpeakerImage.gameObject.SetActive(true);
+        SpeakerImage.sprite = activeLine.SpeakerIcon;
     }
 
     IEnumerator RevealByCharacter(TMP_Text textComponent)
