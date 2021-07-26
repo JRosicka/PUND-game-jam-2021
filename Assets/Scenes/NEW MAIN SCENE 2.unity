@@ -8400,6 +8400,7 @@ GameObject:
   - component: {fileID: 935998185}
   - component: {fileID: 935998186}
   - component: {fileID: 935998187}
+  - component: {fileID: 935998188}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -8490,7 +8491,11 @@ MonoBehaviour:
   - {fileID: 1627566271}
   - {fileID: 1091286691}
   IslandManager: {fileID: 935998185}
+  MapFragmentCollectiblePrefab: {fileID: 8419425156129981717, guid: 25885eedb6d912342b70842ea0970dda,
+    type: 3}
   DroppedMapFragmentsBucket: {fileID: 212211953}
+  DroppedItemPrefab: {fileID: 71257945981007218, guid: 8c818bfe373fe9c4eaa331bf6ce6fc92,
+    type: 3}
   ShipSpawnLocations:
   - {fileID: 1871759973}
   - {fileID: 813623727}
@@ -8538,13 +8543,15 @@ MonoBehaviour:
   - {fileID: 339150406}
   - {fileID: 1087659656}
   DelaySecondsBeforeAssigningCollectibles: 3
+  CollectibleBucket: {fileID: 1859775571}
   MapFragmentPrefab: {fileID: 8419425156129981717, guid: 25885eedb6d912342b70842ea0970dda,
     type: 3}
   NullCollectiblePrefab: {fileID: 2226962456259313073, guid: 679a5699b09ad01458a6eca3050bb41c,
     type: 3}
+  VictoryPrefab: {fileID: 1097385332282227062, guid: 18d6bec050ce1184fad5074c63462bfd,
+    type: 3}
   UpgradePrefabs:
   - {fileID: 8852705965234601869, guid: d7c248a64a3ff91479372569c9251999, type: 3}
-  CollectibleBucket: {fileID: 1859775571}
 --- !u!114 &935998186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8574,6 +8581,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioBucket: {fileID: 307432087}
+--- !u!114 &935998188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935998181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e282eb607e44a8f91a69d45b47c3126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 935998187}
+        m_MethodName: TestFadeOutAllAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &940558364
 PrefabInstance:
   m_ObjectHideFlags: 0

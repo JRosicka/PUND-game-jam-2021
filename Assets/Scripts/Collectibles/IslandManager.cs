@@ -10,12 +10,14 @@ public class IslandManager : MonoBehaviour {
     public List<Island> Islands;
     public int DelaySecondsBeforeAssigningCollectibles = 3;
     public readonly int totalMapFragmentCount = 3;
-
-    public MapFragmentCollectible MapFragmentPrefab;
-    public NullCollectible NullCollectiblePrefab;
-    public List<UpgradeCollectible> UpgradePrefabs;
     public GameObject CollectibleBucket;
 
+    [Header("Collectibles")]
+    public MapFragmentCollectible MapFragmentPrefab;
+    public NullCollectible NullCollectiblePrefab;
+    public VictoryCollectible VictoryPrefab;
+    public List<UpgradeCollectible> UpgradePrefabs;
+    
     private List<MapFragmentCollectible> queuedMapFragments = new List<MapFragmentCollectible>();
     private List<Collectible> spawnedCollectibles = new List<Collectible>();
 
@@ -26,10 +28,11 @@ public class IslandManager : MonoBehaviour {
         StartCoroutine(AssignCollectibles());
     }
 
-    public void OnCollectiblePickedUp(PlayerController player, Collectible collectible, Island island) {
+    public void OnCollectiblePickedUp(PlayerController player, Collectible collectible) {
         collectible.ApplyCollectible(player);
 
-        if (collectible is MapFragmentCollectible) {
+        // Islands get refreshed if this was a map fragment, but only if this isn't getting picked up from a dead player
+        if (collectible is MapFragmentCollectible fragmentCollectible && !fragmentCollectible.WasDroppedByPlayer) {
             StartCoroutine(AssignCollectibles());
         }
         
@@ -66,6 +69,16 @@ public class IslandManager : MonoBehaviour {
             if (assignableIslands.Contains(chosenIsland)) {
                 assignableIslands.Remove(chosenIsland);
             }
+        } else {
+            // Pick the treasure location!
+            VictoryCollectible victoryCollectible = Instantiate(VictoryPrefab, CollectibleBucket.transform);
+            Island chosenIsland = assignableMapFragmentIslands[Random.Range(0, assignableMapFragmentIslands.Count)];
+            chosenIsland.AssignCollectible(victoryCollectible);
+            spawnedCollectibles.Add(victoryCollectible);
+
+            if (assignableIslands.Contains(chosenIsland)) {
+                assignableIslands.Remove(chosenIsland);
+            }
         }
 
         // Upgrades
@@ -82,4 +95,6 @@ public class IslandManager : MonoBehaviour {
             spawnedCollectibles.Add(nullCollectible);
         }
     }
+    
+    
 }

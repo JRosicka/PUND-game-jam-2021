@@ -9,7 +9,11 @@ public class GameManager : MonoBehaviour {
     public static GameManager Instance;
 
     public IslandManager IslandManager;
+    
+    public MapFragmentCollectible MapFragmentCollectiblePrefab;
     public Transform DroppedMapFragmentsBucket;
+
+    public PickupLocation DroppedItemPrefab;
 
     public List<Transform> ShipSpawnLocations;
     private int nextShipSpawnIndex;
@@ -43,5 +47,21 @@ public class GameManager : MonoBehaviour {
         nextShipSpawnIndex = (nextShipSpawnIndex + 1) % ShipSpawnLocations.Count;
 
         return ret;
+    }
+
+    public void DropFragment(int numberOfHeldFragments, Vector3 location) {
+        PickupLocation droppedLocation = Instantiate(DroppedItemPrefab, DroppedMapFragmentsBucket);
+        Transform locationTransform = droppedLocation.transform;
+        locationTransform.position = location;
+        
+        MapFragmentCollectible fragment = Instantiate(MapFragmentCollectiblePrefab, locationTransform);
+        fragment.SetFragmentCount(numberOfHeldFragments);
+        fragment.WasDroppedByPlayer = true;
+
+        droppedLocation.AssignCollectible(fragment);
+    }
+
+    public void EndGameWithWinner(PlayerController winner) {
+        Debug.Log("THE WINNER IS PLAYER " + winner.Ship.PlayerID);
     }
 }

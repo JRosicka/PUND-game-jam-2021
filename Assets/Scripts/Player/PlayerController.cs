@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour {
     private int currentMapFragmentCount;
 
     public int StartingHP;
-    public MapFragmentCollectible MapFragmentCollectiblePrefab;
     public PirateShip Ship;
 
     public void Start() {
@@ -51,15 +50,12 @@ public class PlayerController : MonoBehaviour {
 
         // Drop all the held map fragments
         if (currentMapFragmentCount > 0) {
-            MapFragmentCollectible fragment = Instantiate(MapFragmentCollectiblePrefab, GameManager.Instance.DroppedMapFragmentsBucket);
-            fragment.SetFragmentCount(currentMapFragmentCount);
+            GameManager.Instance.DropFragment(currentMapFragmentCount, Ship.transform.position);
         }
         currentMapFragmentCount = 0;
         
         Debug.Log("Ship destroyed!");
-
-        // TODO: Does the player lose their upgrades?
-
+        
         Ship.transform.position = GameManager.Instance.GetNextShipSpawnLocation();
     }
 }
