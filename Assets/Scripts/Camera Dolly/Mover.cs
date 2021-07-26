@@ -6,15 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class Mover : MonoBehaviour
 {
-    public Rail rail;
     private const string SHOOT_NAME = "Shoot";
 
+    public Rail rail;
+    public GameObject hudManager;
     public int PlayerID;
     private Player PlayerInput;
 
     private int currentSeg;
     private float transition;
-    private bool isCompleted;
     private bool startDolly;
 
     private void Start()
@@ -45,8 +45,11 @@ public class Mover : MonoBehaviour
 
         if(startDolly)
         {
+            hudManager.SetActive(false);
             Play();
         }
+
+
         if(currentSeg == 14)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

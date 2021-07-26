@@ -10307,6 +10307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rail: {fileID: 1232525986}
+  hudManager: {fileID: 270379261}
   PlayerID: 0
 --- !u!1001 &1035596775
 PrefabInstance:
@@ -14165,14 +14166,14 @@ RectTransform:
   m_GameObject: {fileID: 1407400058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 15, y: 7, z: 1}
   m_Children: []
   m_Father: {fileID: 270379262}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 26, y: 230}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1407400060
@@ -20159,7 +20160,7 @@ Transform:
   m_GameObject: {fileID: 2039093638317761939}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1000, y: 400, z: 1000}
+  m_LocalScale: {x: 10000, y: 400, z: 10000}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
