@@ -72,6 +72,12 @@ public class IslandManager : MonoBehaviour {
         } else {
             // Pick the victory location!
             VictoryCollectible victoryCollectible = Instantiate(VictoryPrefab, CollectibleBucket.transform);
+
+            // Hack - we don't want to pick a location with a hint telling the player to look for a map fragment there. 
+            // They already have all the map fragments.
+            assignableMapFragmentIslands = assignableMapFragmentIslands
+                .Where(e => !e.Riddle.DialogString.ToLower().Contains("map")).ToList();
+            
             Island chosenIsland = assignableMapFragmentIslands[Random.Range(0, assignableMapFragmentIslands.Count)];
             chosenIsland.AssignCollectible(victoryCollectible);
             spawnedCollectibles.Add(victoryCollectible);
