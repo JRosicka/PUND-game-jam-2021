@@ -28,7 +28,7 @@ public class IntroAudioScript : MonoBehaviour {
         AudioManager.PauseAudio(DialogInstance);
         cameraControl.cameraMoveSpeed = fastCam;
         
-        yield return new WaitForSeconds(2.3f);
+        yield return new WaitForSeconds(4.3f);
 
         cameraControl.cameraMoveSpeed = slowCam;
         
@@ -44,7 +44,13 @@ public class IntroAudioScript : MonoBehaviour {
         
         AudioManager.ResumeAudio(DialogInstance);
 
-        //AudioManager.FadeOutAllAudio();
+        yield return new WaitForSeconds(11.5f);
+
+        cameraControl.cameraMoveSpeed = fastCam;
+
+        //yield return new WaitForSeconds(2f);
+
+        AudioManager.FadeOutAllAudio();
 
         yield return null;
     }

@@ -59,12 +59,12 @@ public class Mover : MonoBehaviour
         }
 
 
-        if(currentSeg == 14)
+        if(currentSeg == rail.nodes.Length-2)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
-        //Debug.Log(currentSeg);
+        Debug.Log(currentSeg);
 ;
     }
 
