@@ -108,8 +108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartingHP: 3
-  MapFragmentCollectiblePrefab: {fileID: 8419425156129981717, guid: 25885eedb6d912342b70842ea0970dda,
-    type: 3}
   Ship: {fileID: 5576863368071504220}
 --- !u!1 &6837303658325439622
 GameObject:
@@ -135,7 +133,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6837303658325439622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.2, y: 0, z: -21.8}
+  m_LocalPosition: {x: -12, y: 0, z: -23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6557784518797367624}
@@ -165,7 +163,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6837303658514610568}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.2, y: 0, z: 21.49}
+  m_LocalPosition: {x: -12, y: 0, z: 23}
   m_LocalScale: {x: 1, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 6557784518797367624}
@@ -225,18 +223,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerID: 0
-  MaxForwardSpeedInput: 0.01
-  MaxTurnSpeedInput: 2
-  MaxForwardSpeed: 2
-  MaxTurnSpeed: 0.5
+  MaxForwardSpeedInput: 0.02
+  MaxTurnSpeedInput: 3
+  MaxForwardSpeed: 4
+  MaxTurnSpeed: 0.75
   MinTurnSpeed: 0.05
   cannonFireDelay: 1
   RotationBySpeed:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0.051440507
+      time: -0.00092764385
+      value: 0.3494306
       inSlope: 0.154832
       outSlope: 0.154832
       tangentMode: 0
@@ -351,8 +349,8 @@ MonoBehaviour:
   water: {fileID: 0}
   strength: 1
   objectDepth: 1
-  velocityDrag: 0.99
-  angularDrag: 0.5
+  velocityDrag: 3
+  angularDrag: 2
   effectors:
   - {fileID: 6837303659497614736}
   - {fileID: 6837303659771142148}
@@ -382,7 +380,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6837303659497614737}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.2, y: 0, z: -21.8}
+  m_LocalPosition: {x: 12, y: 0, z: -23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6557784518797367624}
@@ -412,7 +410,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6837303659771142149}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.2, y: 0, z: 21.49}
+  m_LocalPosition: {x: 12, y: 0, z: 23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6557784518797367624}

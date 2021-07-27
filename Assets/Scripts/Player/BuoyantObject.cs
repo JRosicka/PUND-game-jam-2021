@@ -24,7 +24,7 @@ public class BuoyantObject : MonoBehaviour
     public StylizedWater.StylizedWaterURP water;
 
     [Header("Buoyancy")]
-    [Range(1, 5)] public float strength = 1f;
+    [Range(0, 5)] public float strength = 1f;
     [Range(0.2f, 5)] public float objectDepth = 1f;
 
     public float velocityDrag = 0.99f;
@@ -46,7 +46,7 @@ public class BuoyantObject : MonoBehaviour
 
         // Get rigidbody
         rb = GetComponent<Rigidbody>();
-        rb.useGravity = false;
+        // rb.useGravity = false;
 
         effectorProjections = new Vector3[effectors.Length];
         for (int i = 0; i < effectors.Length; i++) effectorProjections[i] = effectors[i].position;
@@ -54,7 +54,7 @@ public class BuoyantObject : MonoBehaviour
 
     void OnDisable()
     {
-        rb.useGravity = true;
+        // rb.useGravity = true;
     }
     
     void FixedUpdate()
