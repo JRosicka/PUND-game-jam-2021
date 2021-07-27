@@ -11,6 +11,7 @@ public class OutroMover : MonoBehaviour
     
     private int currentSeg;
     private float transition;
+    private bool doneWithOutro;
 
     private void Update()
     {
@@ -18,6 +19,8 @@ public class OutroMover : MonoBehaviour
         {
             return;
         }
+
+        if (doneWithOutro) return;
 
         Play();
 ;
@@ -35,6 +38,11 @@ public class OutroMover : MonoBehaviour
         {
             transition = 1;
             currentSeg--;
+        }
+
+        if (currentSeg >= rail.nodes.Length - 1) {
+            doneWithOutro = true;
+            return;
         }
 
         transform.position = rail.LinearPosition(currentSeg, transition);
