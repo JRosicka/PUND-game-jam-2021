@@ -63,9 +63,6 @@ public class Mover : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-
-        Debug.Log(currentSeg);
-;
     }
 
     private void Play()
