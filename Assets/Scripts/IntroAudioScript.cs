@@ -9,6 +9,8 @@ public class IntroAudioScript : MonoBehaviour {
 
     public Mover cameraControl;
 
+    public Animator ButtonIconIntroSkip;
+
     private AudioSource DialogInstance;
     
     private void Start() {
@@ -22,8 +24,11 @@ public class IntroAudioScript : MonoBehaviour {
         float slowCam = 5f;
         
         DialogInstance = AudioManager.PlaySoundEffect(DialogPrefab);
+        yield return new WaitForSeconds(6f);
         
-        yield return new WaitForSeconds(11f);
+        ButtonIconIntroSkip.Play("Button icon fade in");
+        
+        yield return new WaitForSeconds(5f);
         
         AudioManager.PauseAudio(DialogInstance);
         cameraControl.cameraMoveSpeed = fastCam;

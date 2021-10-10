@@ -11,28 +11,37 @@ public class Mover : MonoBehaviour
     [Range(0f, 10f)] public float cameraMoveSpeed = 5f;
     public Rail rail;
     public GameObject hudManager;
-    public int PlayerID;
-
+    private const int Player1ID = 0;
+    private const int Player2ID = 1;
+    
     public IntroAudioScript AudioScript;
     
-    private Player PlayerInput;
+    private Player Player1Input;
+    private Player Player2Input;
 
     private int currentSeg;
     private float transition;
     private bool startDolly;
     private bool hasStartedAudio;
 
+    private bool allowSkipToGame;
+
     private void Start()
     {
-        PlayerInput = ReInput.players.GetPlayer(PlayerID);
+        Player1Input = ReInput.players.GetPlayer(Player1ID);
+        Player2Input = ReInput.players.GetPlayer(Player2ID);
     }
 
     private void FixedUpdate()
     {
-        if (PlayerInput.controllers.joystickCount == 0)
-        {
-            Joystick joystick = ReInput.controllers.GetJoystick(PlayerID);
-            PlayerInput.controllers.AddController(joystick, true);
+        if (Player1Input.controllers.joystickCount == 0) {
+            Joystick joystick1 = ReInput.controllers.GetJoystick(Player1ID);
+            Player1Input.controllers.AddController(joystick1, true);
+        }
+        
+        if (Player2Input.controllers.joystickCount == 0) {
+            Joystick joystick2 = ReInput.controllers.GetJoystick(Player2ID);
+            Player2Input.controllers.AddController(joystick2, true);
         }
     }
 
@@ -43,9 +52,13 @@ public class Mover : MonoBehaviour
             return;
         }
 
-        if (PlayerInput.GetButton(SHOOT_NAME) || Input.GetKeyDown(KeyCode.Space))
+        if (Player1Input.GetButton(SHOOT_NAME) || Player2Input.GetButton(SHOOT_NAME) || Input.GetKeyDown(KeyCode.Space))
         {
+            if (allowSkipToGame) {
+                SceneManager.LoadScene("NEW MAIN SCENE 2");
+            }
             startDolly = true;
+            StartCoroutine(AllowSkippingToGameAfterDelay());
         }
 
         if(startDolly)
@@ -82,5 +95,10 @@ public class Mover : MonoBehaviour
         transform.position = rail.CatmullPosition(currentSeg, transition);
         transform.rotation = rail.Orientation(currentSeg, transition);
 
+    }
+
+    private IEnumerator AllowSkippingToGameAfterDelay() {
+        yield return new WaitForSeconds(1f);
+        allowSkipToGame = true;
     }
 }
