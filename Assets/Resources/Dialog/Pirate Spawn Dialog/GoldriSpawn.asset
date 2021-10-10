@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 854d5f8c05e92154cb1b9e0c608b4cf4, type: 3}
   m_Name: GoldriSpawn
   m_EditorClassIdentifier: 
-  DialogString: I'll take care of your ship,. Benji!
+  DialogString: I'll take care of your ship, Benji!
   SpeakerIcon: {fileID: 21300000, guid: ab4b8e9b537a87c4fb83b2fb06ccac18, type: 3}
   Audio: {fileID: 7732501354561891424, guid: 35fd287e44d6eca4d9797865b99dd75c, type: 3}

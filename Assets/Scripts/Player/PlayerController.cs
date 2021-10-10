@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour {
     
     public int StartingHP;
     public PirateShip Ship;
+    public PlayerCrew Crew;
 
     public void Start() {
         currentHP = StartingHP;
@@ -78,6 +79,11 @@ public class PlayerController : MonoBehaviour {
         
         Debug.Log("Ship destroyed!");
         
+        RespawnShip();
+    }
+
+    private void RespawnShip() {
         Ship.transform.position = GameManager.Instance.GetNextShipSpawnLocation();
+        Crew.DisplayNewCrewMate();
     }
 }

@@ -4071,6 +4071,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2118468864538346844, guid: caac7ad95cb63624db00804b01b72f7f,
+        type: 3}
+      propertyPath: CrewSpawnLines.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2118468864538346844, guid: caac7ad95cb63624db00804b01b72f7f,
+        type: 3}
+      propertyPath: CrewSpawnLines.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 96a64508b7b54344aab3af29eb54ca84,
+        type: 2}
+    - target: {fileID: 2118468864538346844, guid: caac7ad95cb63624db00804b01b72f7f,
+        type: 3}
+      propertyPath: CrewSpawnLines.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 29bbf2770e544674285a17d25e3dd0b1,
+        type: 2}
+    - target: {fileID: 2118468864538346844, guid: caac7ad95cb63624db00804b01b72f7f,
+        type: 3}
+      propertyPath: CrewSpawnLines.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 49ab5ed234490f64d85bd3308d5ed267,
+        type: 2}
     - target: {fileID: 5576863368071504220, guid: caac7ad95cb63624db00804b01b72f7f,
         type: 3}
       propertyPath: PlayerID
@@ -11388,6 +11411,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2118468864538346844, guid: caac7ad95cb63624db00804b01b72f7f,
+        type: 3}
+      propertyPath: CrewSpawnLines.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2118468864538346844, guid: caac7ad95cb63624db00804b01b72f7f,
+        type: 3}
+      propertyPath: CrewSpawnLines.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b0e28d39d2b1c54f8d650739edb3949,
+        type: 2}
+    - target: {fileID: 2118468864538346844, guid: caac7ad95cb63624db00804b01b72f7f,
+        type: 3}
+      propertyPath: CrewSpawnLines.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 72a345cb879022b4a9f3b6acae4a3b79,
+        type: 2}
+    - target: {fileID: 2118468864538346844, guid: caac7ad95cb63624db00804b01b72f7f,
+        type: 3}
+      propertyPath: CrewSpawnLines.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 10e9dad77baba6147bbbdd3eb6e1b85f,
+        type: 2}
     - target: {fileID: 5576863368071504220, guid: caac7ad95cb63624db00804b01b72f7f,
         type: 3}
       propertyPath: PlayerID
