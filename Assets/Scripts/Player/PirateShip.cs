@@ -31,6 +31,9 @@ public class PirateShip : MonoBehaviour
     private float currentSpeed;
     private float currentRotationSpeed;
     private float secondsSinceLastShot;
+    
+    public float bulletSpeed;
+    public float bulletScale;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +60,8 @@ public class PirateShip : MonoBehaviour
             // Shoot cannonball
             ProjectileBehavior cannonBall = Instantiate(cannonballPrefab, cannonballSpawnPoint.transform.position, cannonballSpawnPoint.transform.rotation);
             cannonBall.FiringPlayer = PlayerController;
+            cannonBall.projectileSpeed = bulletSpeed;
+            cannonBall.transform.localScale = new Vector3(bulletScale, bulletScale, bulletScale);
             
             secondsSinceLastShot = 0;
         }

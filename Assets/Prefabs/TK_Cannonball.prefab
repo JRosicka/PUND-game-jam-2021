@@ -125,3 +125,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 100
   secondsUntilGravity: 10
+  FiringPlayer: {fileID: 0}

@@ -9,7 +9,8 @@ public class PlayerController : MonoBehaviour {
     // 0 equals DEATH
     private int currentHP;
     private int currentMapFragmentCount;
-
+    private int weaponLevel;
+    
     public int StartingHP;
     public PirateShip Ship;
 
@@ -36,6 +37,27 @@ public class PlayerController : MonoBehaviour {
         Debug.Log("Health get!");
 
         EventManager.healEvent.Invoke(Ship.PlayerID, currentHP);
+    }
+
+    public void ApplySpeedBoost(float accelerationBonus, float topSpeedBonus) {
+        Ship.MaxForwardSpeedInput += accelerationBonus;
+        Ship.MaxForwardSpeed += topSpeedBonus;
+        Debug.Log("Speed boost get!");
+    }
+
+    public void IncrementWeaponLevel() {
+        weaponLevel++;
+        Debug.Log("Weapon level get! Now level " + weaponLevel);
+    }
+
+    public int GetWeaponLevel() {
+        return weaponLevel;
+    }
+
+    public void ApplyWeaponUpgrade(WeaponUpgradeCollectible.WeaponConfig config) {
+        Ship.cannonFireDelay = config.bulletFireDelay;
+        Ship.bulletSpeed = config.bulletSpeed;
+        Ship.bulletScale = config.bulletScale;
     }
 
     public void AddMapFragment() {

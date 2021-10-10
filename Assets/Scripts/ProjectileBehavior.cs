@@ -19,8 +19,7 @@ public class ProjectileBehavior : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         // The cannonball starts falling after a set amount of time
         secondsUntilGravity -= Time.deltaTime;
         if (secondsUntilGravity < 0)
@@ -33,6 +32,11 @@ public class ProjectileBehavior : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void SetVelocity(float newSpeed) {
+        projectileSpeed = newSpeed;
+        ourRigidbody.velocity = transform.forward * projectileSpeed;
     }
 
     private void OnCollisionEnter(Collision thisCollision)

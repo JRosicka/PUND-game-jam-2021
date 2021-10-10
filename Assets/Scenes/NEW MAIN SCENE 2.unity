@@ -8639,6 +8639,8 @@ MonoBehaviour:
   VictoryPrefab: {fileID: 1097385332282227062, guid: 18d6bec050ce1184fad5074c63462bfd,
     type: 3}
   UpgradePrefabs:
+  - {fileID: 7835275424065870476, guid: 8be271eb3f885174eb2b6d8f2b36df36, type: 3}
+  - {fileID: 3751861253714254439, guid: c7e9784238c3bf2498b90a4d021825cb, type: 3}
   - {fileID: 8852705965234601869, guid: d7c248a64a3ff91479372569c9251999, type: 3}
 --- !u!114 &935998186
 MonoBehaviour:
