@@ -57,13 +57,7 @@ public class PirateShip : MonoBehaviour
         secondsSinceLastShot += Time.deltaTime;
 
         if (PlayerInput.GetButton(SHOOT_NAME) && secondsSinceLastShot >= cannonFireDelay) {
-            // Shoot cannonball
-            ProjectileBehavior cannonBall = Instantiate(cannonballPrefab, cannonballSpawnPoint.transform.position, cannonballSpawnPoint.transform.rotation);
-            cannonBall.FiringPlayer = PlayerController;
-            cannonBall.projectileSpeed = bulletSpeed;
-            cannonBall.transform.localScale = new Vector3(bulletScale, bulletScale, bulletScale);
-            
-            secondsSinceLastShot = 0;
+            ShootCannonball();
         }
         
         if (PlayerInput.GetButton(INTERACT_NAME)) {
@@ -85,6 +79,17 @@ public class PirateShip : MonoBehaviour
         if (PlayerInput.GetButton(ABILITY_NAME)) {
             TestButton(ABILITY_NAME);
         }
+    }
+
+    private void ShootCannonball() {
+        AudioManager.Instance.PlayCannonShot();
+        
+        ProjectileBehavior cannonBall = Instantiate(cannonballPrefab, cannonballSpawnPoint.transform.position, cannonballSpawnPoint.transform.rotation);
+        cannonBall.FiringPlayer = PlayerController;
+        cannonBall.projectileSpeed = bulletSpeed;
+        cannonBall.transform.localScale = new Vector3(bulletScale, bulletScale, bulletScale);
+            
+        secondsSinceLastShot = 0;
     }
 
     private void TurnPlayer(float turnInput) {

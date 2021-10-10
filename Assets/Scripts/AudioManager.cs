@@ -7,6 +7,16 @@ public class AudioManager : MonoBehaviour {
     public GameObject AudioBucket;
     
     public static AudioManager Instance;
+
+    public AudioSource SoundEffectCannonShot;
+    public AudioSource SoundEffectShipDestruction;
+    public AudioSource SoundEffectShipHit;
+    
+    public AudioSource SoundEffectWeaponUpgradePickup;
+    public AudioSource SoundEffectMapPiecePickup;
+    public AudioSource SoundEffectHealthPickup;
+    public AudioSource SoundEffectSpeedUpgradePickup;
+
     private AudioSource currentlyPlayingSong;
 
     private List<AudioSource> playingInstances = new List<AudioSource>();
@@ -94,8 +104,8 @@ public class AudioManager : MonoBehaviour {
         AudioSource audioInstance = Instantiate(source, AudioBucket.transform);
         playingInstances.Add(audioInstance);
         
-        source.loop = loop;
-        source.time = 0f;
+        audioInstance.loop = loop;
+        audioInstance.time = 0f;
 
         if (loop) {
             audioInstance.Play();
@@ -123,5 +133,33 @@ public class AudioManager : MonoBehaviour {
     
     public void TestFadeOutAllAudio() {
         FadeOutAllAudio();
+    }
+
+    public void PlayCannonShot() {
+        PlaySoundEffect(SoundEffectCannonShot);
+    }
+
+    public void PlayShipDestruction() {
+        PlaySoundEffect(SoundEffectShipDestruction);
+    }
+
+    public void PlayShipHit() {
+        PlaySoundEffect(SoundEffectShipHit);
+    }
+
+    public void PlayHealthPickup() {
+        PlaySoundEffect(SoundEffectHealthPickup);
+    }
+
+    public void PlayMapPiecePickup() {
+        PlaySoundEffect(SoundEffectMapPiecePickup);
+    }
+
+    public void PlaySpeedUpgradePickup() {
+        PlaySoundEffect(SoundEffectSpeedUpgradePickup);
+    }
+    
+    public void PlayWeaponUpgradePickup() {
+        PlaySoundEffect(SoundEffectWeaponUpgradePickup);
     }
 }

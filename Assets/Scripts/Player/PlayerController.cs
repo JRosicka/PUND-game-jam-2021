@@ -29,8 +29,11 @@ public class PlayerController : MonoBehaviour {
         
         EventManager.damageEvent.Invoke(Ship.PlayerID);
 
-        if (currentHP == 0)
+        if (currentHP == 0) {
             DestroyShip();
+        } else {
+            AudioManager.Instance.PlayShipHit();
+        }
     }
 
     public void Heal(int additionalHealth) {
@@ -68,6 +71,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void DestroyShip() {
+        AudioManager.Instance.PlayShipDestruction();
+        
         currentHP = StartingHP;
         EventManager.healEvent.Invoke(Ship.PlayerID, currentHP);
 

@@ -14,6 +14,7 @@ public class WeaponUpgradeCollectible : UpgradeCollectible {
     public List<WeaponConfig> WeaponConfigByUpgradeLevel;
     
     public override void ApplyCollectible(PlayerController player) {
+        AudioManager.Instance.PlayWeaponUpgradePickup();
         player.IncrementWeaponLevel();
         player.ApplyWeaponUpgrade(WeaponConfigByUpgradeLevel[Mathf.Clamp(player.GetWeaponLevel(), 0, WeaponConfigByUpgradeLevel.Count - 1)]);
     }

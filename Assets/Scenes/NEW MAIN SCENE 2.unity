@@ -8774,6 +8774,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioBucket: {fileID: 307432087}
+  SoundEffectCannonShot: {fileID: 699821353300567063, guid: 7d63d9ba7a820db4a8562df3a756c447,
+    type: 3}
+  SoundEffectShipDestruction: {fileID: 699821353300567063, guid: c0bc0d4c425efab439d17061a424542a,
+    type: 3}
+  SoundEffectShipHit: {fileID: 699821353300567063, guid: 3d960ab56bd8bb04c9088c069497fc10,
+    type: 3}
+  SoundEffectWeaponUpgradePickup: {fileID: 699821353300567063, guid: c9f6d51a9a427d94794cf795ab7ac275,
+    type: 3}
+  SoundEffectMapPiecePickup: {fileID: 699821353300567063, guid: cbab109120b62cd4ebd016fca26e5891,
+    type: 3}
+  SoundEffectHealthPickup: {fileID: 699821353300567063, guid: d9320546813714e4a872dbda593e766d,
+    type: 3}
+  SoundEffectSpeedUpgradePickup: {fileID: 699821353300567063, guid: 62c1c9afd26646c47904de7dab4d84db,
+    type: 3}
 --- !u!114 &935998188
 MonoBehaviour:
   m_ObjectHideFlags: 0

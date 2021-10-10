@@ -4,6 +4,7 @@
     public bool WasDroppedByPlayer;
 
     public override void ApplyCollectible(PlayerController player) {
+        AudioManager.Instance.PlayMapPiecePickup();
         for (int i = 0; i < mapFragmentCount; i++) {
             player.AddMapFragment();
         }
