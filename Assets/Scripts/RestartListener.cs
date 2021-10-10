@@ -32,6 +32,6 @@ public class RestartListener : MonoBehaviour {
     }
 
     private void RestartGame() {
-        SceneManager.LoadScene("Intro Scene");
+        SceneManager.LoadScene("NEW MAIN SCENE 2");
     }
 }
