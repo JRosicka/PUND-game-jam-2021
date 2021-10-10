@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 854d5f8c05e92154cb1b9e0c608b4cf4, type: 3}
+  m_Name: BenjiSpawn
+  m_EditorClassIdentifier: 
+  DialogString: Ahoy, gold-seekers! Join me, or DIE.
+  SpeakerIcon: {fileID: 21300000, guid: 1249284ff7318f740b11f76989261fd7, type: 3}
+  Audio: {fileID: 3343883156926570234, guid: 398cd144d23e23a41b7e90e0430c87bf, type: 3}
