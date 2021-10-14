@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class RestartListener : MonoBehaviour {
-    private const string SHOOT_NAME = "Shoot";
+    private const string SELECT_NAME = "Select";
     private Player Player1Input;
     private Player Player2Input;
 
@@ -26,7 +26,7 @@ public class RestartListener : MonoBehaviour {
     }
 
     private void Update() {
-        if (Player1Input.GetButton(SHOOT_NAME) || Player2Input.GetButton(SHOOT_NAME) || Input.GetKeyDown(KeyCode.Space)) {
+        if (Player1Input.GetButton(SELECT_NAME) || Player2Input.GetButton(SELECT_NAME) || Input.GetKeyDown(KeyCode.Space)) {
             RestartGame();
         }
     }

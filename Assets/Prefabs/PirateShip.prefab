@@ -336,7 +336,8 @@ MonoBehaviour:
   PlayerController: {fileID: 1361515957229329858}
   cannonballPrefab: {fileID: 2563903172223447672, guid: e2a27b6bcbc8ce0419f38e0af12b85d0,
     type: 3}
-  cannonballSpawnPoint: {fileID: 2341794813844782495}
+  cannonballSpawnPointRight: {fileID: 2341794813844782495}
+  cannonballSpawnPointLeft: {fileID: 3182973337223821243}
   bulletSpeed: 100
   bulletScale: 30
 --- !u!33 &6837303659162276618

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class OutroMover : MonoBehaviour
 {
-    private const string SHOOT_NAME = "Shoot";
-
     [Range(0f, 10f)] public float cameraMoveSpeed = 2.5f;
     public Rail rail;
     

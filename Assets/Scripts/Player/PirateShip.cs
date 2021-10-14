@@ -5,12 +5,14 @@ public class PirateShip : MonoBehaviour
 {
     private const string HORIZONTAL_MOVEMENT_NAME = "Move Horizontal";
     private const string VERTICAL_MOVEMENT_NAME = "Move Vertical";
-    private const string SHOOT_NAME = "Shoot";
+    private const string SELECT_NAME = "Select";
     private const string INTERACT_NAME = "Interact";
     private const string HANDBRAKE_NAME = "Handbrake";
     private const string PAUSE_NAME = "Pause";
     private const string RESTART_NAME = "Restart";
     private const string ABILITY_NAME = "Ability";
+    private const string SHOOT_RIGHT = "Shoot Right";
+    private const string SHOOT_LEFT = "Shoot Left";
 
     public int PlayerID;
     public float MaxForwardSpeedInput;
@@ -25,7 +27,8 @@ public class PirateShip : MonoBehaviour
     public PlayerController PlayerController;
 
     public ProjectileBehavior cannonballPrefab;
-    public GameObject cannonballSpawnPoint;
+    public GameObject cannonballSpawnPointRight;
+    public GameObject cannonballSpawnPointLeft;
     
     private Player PlayerInput;
     private float currentSpeed;
@@ -56,8 +59,12 @@ public class PirateShip : MonoBehaviour
 
         secondsSinceLastShot += Time.deltaTime;
 
-        if (PlayerInput.GetButton(SHOOT_NAME) && secondsSinceLastShot >= cannonFireDelay) {
-            ShootCannonball();
+        if (PlayerInput.GetButton(SHOOT_RIGHT) && secondsSinceLastShot >= cannonFireDelay) {
+            ShootCannonball(true);
+        }
+        
+        if (PlayerInput.GetButton(SHOOT_LEFT) && secondsSinceLastShot >= cannonFireDelay) {
+            ShootCannonball(false);
         }
         
         if (PlayerInput.GetButton(INTERACT_NAME)) {
@@ -81,10 +88,13 @@ public class PirateShip : MonoBehaviour
         }
     }
 
-    private void ShootCannonball() {
+    /// <param name="shootAtRight">If true, fire at the right, otherwise fire at the left</param>
+    private void ShootCannonball(bool shootAtRight) {
         AudioManager.Instance.PlayCannonShot();
+
+        GameObject spawner = shootAtRight ? cannonballSpawnPointRight : cannonballSpawnPointLeft;
         
-        ProjectileBehavior cannonBall = Instantiate(cannonballPrefab, cannonballSpawnPoint.transform.position, cannonballSpawnPoint.transform.rotation);
+        ProjectileBehavior cannonBall = Instantiate(cannonballPrefab, spawner.transform.position, spawner.transform.rotation);
         cannonBall.FiringPlayer = PlayerController;
         cannonBall.projectileSpeed = bulletSpeed;
         cannonBall.transform.localScale = new Vector3(bulletScale, bulletScale, bulletScale);

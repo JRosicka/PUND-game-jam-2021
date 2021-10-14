@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Mover : MonoBehaviour
 {
-    private const string SHOOT_NAME = "Shoot";
+    private const string SELECT_NAME = "Select";
 
     [Range(0f, 10f)] public float cameraMoveSpeed = 5f;
     public Rail rail;
@@ -52,7 +52,7 @@ public class Mover : MonoBehaviour
             return;
         }
 
-        if (Player1Input.GetButton(SHOOT_NAME) || Player2Input.GetButton(SHOOT_NAME) || Input.GetKeyDown(KeyCode.Space))
+        if (Player1Input.GetButton(SELECT_NAME) || Player2Input.GetButton(SELECT_NAME) || Input.GetKeyDown(KeyCode.Space))
         {
             if (allowSkipToGame) {
                 SceneManager.LoadScene("NEW MAIN SCENE 2");
