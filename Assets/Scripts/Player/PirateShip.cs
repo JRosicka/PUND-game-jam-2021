@@ -52,39 +52,22 @@ public class PirateShip : MonoBehaviour
             Joystick joystick = ReInput.controllers.GetJoystick(PlayerID);
             PlayerInput.controllers.AddController(joystick, true);
         }
+        
+        secondsSinceLastShot += Time.deltaTime;
+
+        // Disallow player input while the ship is respawning
+        if (PlayerController.IsRespawning) return;
 
         MovePlayer(PlayerInput.GetAxis(VERTICAL_MOVEMENT_NAME) * MaxForwardSpeedInput);
         float turnInput = PlayerInput.GetAxis(HORIZONTAL_MOVEMENT_NAME);
         TurnPlayer(turnInput * MaxTurnSpeedInput);
-
-        secondsSinceLastShot += Time.deltaTime;
-
+        
         if (PlayerInput.GetButton(SHOOT_RIGHT) && secondsSinceLastShot >= cannonFireDelay) {
             ShootCannonball(true);
         }
         
         if (PlayerInput.GetButton(SHOOT_LEFT) && secondsSinceLastShot >= cannonFireDelay) {
             ShootCannonball(false);
-        }
-        
-        if (PlayerInput.GetButton(INTERACT_NAME)) {
-            TestButton(INTERACT_NAME);
-        }
-        
-        if (PlayerInput.GetButton(HANDBRAKE_NAME)) {
-            TestButton(HANDBRAKE_NAME);
-        }
-        
-        if (PlayerInput.GetButton(PAUSE_NAME)) {
-            TestButton(PAUSE_NAME);
-        }
-        
-        if (PlayerInput.GetButton(RESTART_NAME)) {
-            TestButton(RESTART_NAME);
-        }
-        
-        if (PlayerInput.GetButton(ABILITY_NAME)) {
-            TestButton(ABILITY_NAME);
         }
     }
 
@@ -120,9 +103,5 @@ public class PirateShip : MonoBehaviour
         currentSpeed += moveInput;
         currentSpeed = Mathf.Clamp(currentSpeed, -MaxForwardSpeed, MaxForwardSpeed);
         t.localPosition += t.rotation * Vector3.forward * currentSpeed;
-    }
-
-    private void TestButton(string buttonName) {
-        // Debug.Log("Test button: " + buttonName);
     }
 }

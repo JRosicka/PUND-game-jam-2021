@@ -46,8 +46,13 @@ public class ProjectileBehavior : MonoBehaviour
         PirateShip theirPlayerData = theirGameObject.GetComponent<PirateShip>();
         if (theirPlayerData != null) // if it hit a player
         {
-            // Ignore the collision if the player hit themselves - could happen right after firing
+            // Ignore the collision if the player hit themselves
             if (theirPlayerData == FiringPlayer.Ship) {
+                return;
+            }
+
+            // Ignore the collision if the player is respawning
+            if (theirPlayerData.PlayerController.IsRespawning) {
                 return;
             }
             

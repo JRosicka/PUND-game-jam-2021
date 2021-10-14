@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -14,6 +13,11 @@ public class PlayerController : MonoBehaviour {
     public int StartingHP;
     public PirateShip Ship;
     public PlayerCrew Crew;
+    public GameObject ShipView;
+
+    public float RespawnSeconds = 3f;
+    
+    public bool IsRespawning { get; private set; }
 
     public void Start() {
         currentHP = StartingHP;
@@ -73,9 +77,6 @@ public class PlayerController : MonoBehaviour {
     private void DestroyShip() {
         AudioManager.Instance.PlayShipDestruction();
         
-        currentHP = StartingHP;
-        EventManager.healEvent.Invoke(Ship.PlayerID, currentHP);
-
         // Drop all the held map fragments
         if (currentMapFragmentCount > 0) {
             GameManager.Instance.DropFragment(currentMapFragmentCount, Ship.transform.position);
@@ -84,11 +85,28 @@ public class PlayerController : MonoBehaviour {
         
         Debug.Log("Ship destroyed!");
         
-        RespawnShip();
+        StartCoroutine(RespawnShip());
     }
 
-    private void RespawnShip() {
+    private IEnumerator RespawnShip() {
+        IsRespawning = true;
+        
+        ShipView.SetActive(false);
+        Ship.gameObject.SetActive(true);
+        
+        yield return new WaitForSeconds(RespawnSeconds);
+        DoRespawnShip();
+    }
+
+    private void DoRespawnShip() {
         Ship.transform.position = GameManager.Instance.GetNextShipSpawnLocation();
+        ShipView.SetActive(true);
+        Ship.gameObject.SetActive(true);
+        
+        currentHP = StartingHP;
+        EventManager.healEvent.Invoke(Ship.PlayerID, currentHP);
+
+        IsRespawning = false;
         Crew.DisplayNewCrewMate();
     }
 }
