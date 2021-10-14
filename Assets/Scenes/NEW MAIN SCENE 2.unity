@@ -8694,6 +8694,13 @@ MonoBehaviour:
   - {fileID: 832204264}
   - {fileID: 136628780}
   cameraPos: {fileID: 1033585321}
+  GameplaySongList:
+  - {fileID: 7693257997279293300, guid: a53d56ff0de000e45aa87528c2a9f589, type: 3}
+  - {fileID: 7693257997279293300, guid: ccf68e1ba0bdd5a41b6751e8e5c7bd7e, type: 3}
+  - {fileID: 7693257997279293300, guid: fbaadc28e4790ce4d8462bc158b69252, type: 3}
+  - {fileID: 7693257997279293300, guid: d2c9419cc8051fb40a2272dd30a6097c, type: 3}
+  - {fileID: 7693257997279293300, guid: 662bdefaff76f014ba9cb6fded4b21a6, type: 3}
+  - {fileID: 7693257997279293300, guid: b7a974f23f4f424459a92adf0819c2a2, type: 3}
 --- !u!4 &935998184
 Transform:
   m_ObjectHideFlags: 0

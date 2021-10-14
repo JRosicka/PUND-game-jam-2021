@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4408107907759745561}
   - component: {fileID: 7693257997279293300}
   m_Layer: 0
-  m_Name: Rise Of An Empire Loop
+  m_Name: Orchestral Battle Theme 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: cb90cafb84d672a489f03d0d635cce0c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e8957318f61484e4ca89780d3e0320ee, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.13
   m_Pitch: 1

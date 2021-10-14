@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -23,19 +24,42 @@ public class AudioManager : MonoBehaviour {
     private List<AudioSource> fadingOutInstances;
     private List<AudioSource> pausedAudio = new List<AudioSource>();
 
-    public void Start() {
+    public Queue<AudioSource> SongQueue = new Queue<AudioSource>();
+
+    public void Awake() {
         Instance = this;
-        
+    }
+
+    public void Start() {
         EventManager.dialogEvent.AddListener(PlayDialogLine);
     }
 
-    public AudioSource PlaySong(AudioSource source) {
+    // Play the list of songs in order, looping back to the beginning when done
+    public void PlaySongList(List<AudioSource> sources) {
+        SongQueue = new Queue<AudioSource>(sources);
+        StartCoroutine(PlayNextSongInQueueAfterDelay(0));
+    }
+
+    private IEnumerator PlayNextSongInQueueAfterDelay(float delaySeconds) {
+        yield return new WaitForSeconds(delaySeconds);
+        
+        AudioSource nextSong = SongQueue.Dequeue();
+        
+        // Re-add the song to the end of the queue so that the playlist effectively loops
+        SongQueue.Enqueue(nextSong);
+        PlaySong(nextSong, false);
+        
+        // Play the next song in the queue after the duration of this song's clip length
+        StartCoroutine(PlayNextSongInQueueAfterDelay(nextSong.clip.length));
+    }
+
+    public AudioSource PlaySong(AudioSource source, bool loop = true) {
         if (currentlyPlayingSong != null) {
             currentlyPlayingSong.Stop();
         }
 
         currentlyPlayingSong = source;
-        return PlayAudioSource(source, true);
+        return PlayAudioSource(source, loop);
     }
 
     public AudioSource PlaySoundEffect(AudioSource source) {

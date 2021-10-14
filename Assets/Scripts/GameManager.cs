@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Util;
 
 public class GameManager : MonoBehaviour {
     [SerializeField]
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour {
     private int nextShipSpawnIndex;
 
     public Transform cameraPos;
+
+    public List<AudioSource> GameplaySongList;
     
     void Awake() {
         Instance = this;
@@ -27,6 +30,11 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         IslandManager.Initialize();
+
+        if (GameplaySongList != null) {
+            GameplaySongList.Shuffle();
+            AudioManager.Instance.PlaySongList(GameplaySongList);
+        }
     }
 
     public List<PirateShip> GetPlayers() {
