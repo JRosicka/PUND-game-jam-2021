@@ -31,6 +31,8 @@ public class PickupLocation : MonoBehaviour {
         if (ship == null) return;
 
         PlayerController player = ship.PlayerController;
+        if (player.IsRespawning) return;
+        
         GameManager.Instance.IslandManager.OnCollectiblePickedUp(player, CurrentCollectible);
 
         CollectibleIcon.sprite = null;
