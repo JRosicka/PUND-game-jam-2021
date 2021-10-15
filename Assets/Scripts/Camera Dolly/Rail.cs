@@ -84,6 +84,8 @@ public class Rail : MonoBehaviour
 
         return Quaternion.Lerp(q1, q2, ratio);
     }
+    
+    #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         for(int i = 0; i < nodes.Length -1; i++)
@@ -92,6 +94,5 @@ public class Rail : MonoBehaviour
         }
 
     }
-
-
+    #endif
 }
