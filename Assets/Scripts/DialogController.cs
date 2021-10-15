@@ -13,6 +13,7 @@ public class DialogController : MonoBehaviour
     public Image DialogBox;
     public TextMeshProUGUI dialogText;
     private TMP_Text activeText;
+    private DialogLine activeDialogInstance;
     
     // Start is called before the first frame update
     void Start()
@@ -29,14 +30,14 @@ public class DialogController : MonoBehaviour
         
         dialogText.text = activeLine.DialogString;
         activeText = dialogText.textInfo.textComponent;
-        StartCoroutine(RevealByCharacter(activeText));
+        StartCoroutine(RevealByCharacter(activeText, activeLine));
 
         SpeakerImage.gameObject.SetActive(true);
         SpeakerImage.sprite = activeLine.SpeakerIcon;
     }
 
-    IEnumerator RevealByCharacter(TMP_Text textComponent)
-    {
+    IEnumerator RevealByCharacter(TMP_Text textComponent, DialogLine dialogInstance) {
+        activeDialogInstance = dialogInstance;
         textComponent.ForceMeshUpdate();
 
         TMP_TextInfo textInfo = textComponent.textInfo;
@@ -44,7 +45,8 @@ public class DialogController : MonoBehaviour
         int totalVisibleCharacters = textInfo.characterCount; // Get # of Visible Character in text object
         int visibleCount = 0;
 
-        while (visibleCount <= totalVisibleCharacters)
+        // Stop displaying text if there is a new active dialog instance
+        while (visibleCount <= totalVisibleCharacters && activeDialogInstance == dialogInstance)
         {
             textComponent.maxVisibleCharacters = visibleCount; // How many characters should TextMeshPro display?
             visibleCount += 1;
