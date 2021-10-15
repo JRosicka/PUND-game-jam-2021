@@ -18,4 +18,8 @@ public class WeaponUpgradeCollectible : UpgradeCollectible {
         player.IncrementWeaponLevel();
         player.ApplyWeaponUpgrade(WeaponConfigByUpgradeLevel[Mathf.Clamp(player.GetWeaponLevel(), 0, WeaponConfigByUpgradeLevel.Count - 1)]);
     }
+
+    public override bool CanBeCollectedByPlayer(PlayerController player) {
+        return true;
+    }
 }

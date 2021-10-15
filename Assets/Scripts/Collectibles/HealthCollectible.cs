@@ -3,4 +3,8 @@
         AudioManager.Instance.PlayHealthPickup();
         player.Heal(1);    // Always just 1 health for now
     }
+
+    public override bool CanBeCollectedByPlayer(PlayerController player) {
+        return true;
+    }
 }

@@ -10,6 +10,10 @@
         }
     }
 
+    public override bool CanBeCollectedByPlayer(PlayerController player) {
+        return true;
+    }
+
     public void SetFragmentCount(int newMapFragmentCount) {
         mapFragmentCount = newMapFragmentCount;
     }

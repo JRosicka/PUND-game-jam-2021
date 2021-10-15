@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     // 0 equals DEATH
     private int currentHP;
-    private int currentMapFragmentCount;
+    public int CurrentMapFragmentCount { get; private set; }
     private int weaponLevel;
     
     public int StartingHP;
@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
 
     public void Start() {
         currentHP = StartingHP;
-        currentMapFragmentCount = 0;
+        CurrentMapFragmentCount = 0;
     }
 
     public void ApplyDamage(int damageAmount) {
@@ -69,19 +69,19 @@ public class PlayerController : MonoBehaviour {
     }
 
     public void AddMapFragment() {
-        currentMapFragmentCount++;
+        CurrentMapFragmentCount++;
         Debug.Log("Map fragment get!");
-        EventManager.mapFragmentCollectionEvent.Invoke(Ship.PlayerID, currentMapFragmentCount);
+        EventManager.mapFragmentCollectionEvent.Invoke(Ship.PlayerID, CurrentMapFragmentCount);
     }
 
     private void DestroyShip() {
         AudioManager.Instance.PlayShipDestruction();
         
         // Drop all the held map fragments
-        if (currentMapFragmentCount > 0) {
-            GameManager.Instance.DropFragment(currentMapFragmentCount, Ship.transform.position);
+        if (CurrentMapFragmentCount > 0) {
+            GameManager.Instance.DropFragment(CurrentMapFragmentCount, Ship.transform.position);
         }
-        currentMapFragmentCount = 0;
+        CurrentMapFragmentCount = 0;
         
         Debug.Log("Ship destroyed!");
         
